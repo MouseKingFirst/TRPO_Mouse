@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="d82ac9213b674e568e3d24398d6370f3" Name="Diagram1" ZoomLevel="60">
+        <EntityTypeShape EntityType="libraryModel.C__EFMigrationsHistory" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="libraryModel.library_authors" Width="1.5" PointX="5.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="libraryModel.library_book_example" Width="1.5" PointX="3" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="libraryModel.library_books" Width="1.5" PointX="8" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="libraryModel.library_sessions" Width="1.5" PointX="3" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="libraryModel.library_users" Width="1.5" PointX="0.75" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="libraryModel.library_users_data" Width="1.5" PointX="3" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="libraryModel.sysdiagrams" Width="1.5" PointX="9.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="libraryModel.library_books_relation" Width="1.5" PointX="5.25" PointY="1.75" IsExpanded="true" />
+        <AssociationConnector Association="libraryModel.FK_library_books_library_authors1" ManuallyRouted="false" />
+        <AssociationConnector Association="libraryModel.FK_library_book_example_library_users" ManuallyRouted="false" />
+        <AssociationConnector Association="libraryModel.FK_library_books_relation_library_book_example" ManuallyRouted="false" />
+        <AssociationConnector Association="libraryModel.FK_library_sessions_library_users" ManuallyRouted="false" />
+        <AssociationConnector Association="libraryModel.FK_library_users_data_library_users" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
