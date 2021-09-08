@@ -14,7 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 using TRPO_Mouse.Model;
-
+using System.Security.Cryptography;
 
 namespace TRPO_Mouse.View.Pages
 {
@@ -37,9 +37,11 @@ namespace TRPO_Mouse.View.Pages
             }
             using (var db = new Entities())
             {
+                string passTmp = GetPasswordHash(passwordBox.Password);
+
                 var user = db.library_users
                     .AsNoTracking()
-                    .FirstOrDefault(u => u.login == loginBox.Text && u.password == passwordBox.Password); // md5
+                    .FirstOrDefault(u => u.login == loginBox.Text && u.password == passTmp);
                 if (user == null)
                 {
                     MessageBox.Show("Пользователь с такими данными не найдён!");
@@ -51,16 +53,30 @@ namespace TRPO_Mouse.View.Pages
                 switch(user.role)
                 {
                     case "Admin":
-                        NavigationService?.Navigate(new Menu());
+                        NavigationService?.Navigate(new AdminMenu());
                         break;
-                    case "librarian":
-                        NavigationService?.Navigate(new Menu());
+                    case "Reader":
+                        NavigationService?.Navigate(new UserMenu());
+                        break;
+                    case "Librarian":
+                        NavigationService?.Navigate(new LibrarianMenu());
                         break;
                     default:
-                        NavigationService?.Navigate(new Menu());
+                        MessageBox.Show("Ошибка! По каким-то причинам нам не удалось понять какая у вас роль... Пожалуйста, обратитесь к администратору");
                         break;
                 }
             }
+        }
+        public string GetPasswordHash(string pswrd)
+        {
+            byte[] data = Encoding.Default.GetBytes(pswrd);
+            var result = new SHA256Managed().ComputeHash(data);
+            return BitConverter.ToString(result).Replace("-", "").ToLower();
+        }
+
+        private void ButtonRegister_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService?.Navigate(new RegPage());
         }
     }
 }

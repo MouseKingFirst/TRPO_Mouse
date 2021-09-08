@@ -13,7 +13,7 @@
             <RowDefinition Height="42"></RowDefinition>
         </Grid.RowDefinitions>
         <Rectangle Grid.Row="2" Fill="#FFF4F4F5" StrokeThickness="0"/>
-        <Button x:Name="backBtn" Content="Назад" Grid.Row="0" HorizontalAlignment="Left" Margin="10,10,0,10" Width="75"/>
-        <Frame x:Name="mainFrame" Content="Frame" Grid.Row="1" Source="View/Pages/AuthPage.xaml"/>
+        <Button x:Name="backBtn" Content="Назад" Grid.Row="0" HorizontalAlignment="Left" Margin="10,10,0,10" Width="75" Click="backBtn_Click"/>
+        <Frame x:Name="mainFrame" Content="Frame" Grid.Row="1" Source="View/Pages/AuthPage.xaml" Navigated="mainFrame_Navigated" NavigationUIVisibility="Hidden"/>
     </Grid>
 </Window>

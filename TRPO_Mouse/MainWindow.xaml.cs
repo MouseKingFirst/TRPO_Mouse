@@ -13,6 +13,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
+using TRPO_Mouse.View.Pages;
+
 namespace TRPO_Mouse
 {
     /// <summary>
@@ -23,6 +25,29 @@ namespace TRPO_Mouse
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void mainFrame_Navigated(object sender, NavigationEventArgs e)
+        {
+            if (!(e.Content is Page page)) return;
+            this.Title = $"Урок - {page.Title}";
+
+            if (page is AuthPage)
+            {
+                backBtn.Visibility = Visibility.Hidden;
+            }
+            else
+            {
+                backBtn.Visibility = Visibility.Visible;
+            }
+        }
+
+        private void backBtn_Click(object sender, RoutedEventArgs e)
+        {
+            if (mainFrame.CanGoBack)
+            {
+                mainFrame.GoBack();
+            }
         }
     }
 }
