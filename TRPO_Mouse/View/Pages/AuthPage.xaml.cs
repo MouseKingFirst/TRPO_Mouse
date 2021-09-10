@@ -37,42 +37,44 @@ namespace TRPO_Mouse.View.Pages
             }
             using (var db = new Entities())
             {
-                
-                if (db.Database.Connection.State != System.Data.ConnectionState.Open)
+                try
                 {
-                    MessageBox.Show("Ошибка! Отсутствует подключение к БД!");
+
+                    string passTmp = GetPasswordHash(passwordBox.Password);
+                    var user = db.library_users
+                            .AsNoTracking()
+                            .FirstOrDefault(u => u.login == loginBox.Text && u.password == passTmp);
+
+                    if (user == null)
+                    {
+                        MessageBox.Show("Пользователь с такими данными не найдён!");
+                        return;
+                    }
+
+                    MessageBox.Show("Пользователь успешно найден!");
+
+                    switch (user.role)
+                    {
+                        case "Admin":
+                            NavigationService?.Navigate(new AdminMenu());
+                            break;
+                        case "Reader":
+                            NavigationService?.Navigate(new UserMenu());
+                            break;
+                        case "Librarian":
+                            NavigationService?.Navigate(new LibrarianMenu());
+                            break;
+                        default:
+                            MessageBox.Show("Ошибка! По каким-то причинам нам не удалось понять какая у вас роль... Пожалуйста, обратитесь к администратору");
+                            break;
+                    }
+                }
+                catch
+                {
+                    MessageBox.Show("Ошибка подключения к БД!");
                     return;
                 }
-                string passTmp = GetPasswordHash(passwordBox.Password);
 
-                var user = db.library_users
-                .AsNoTracking()
-                .FirstOrDefault(u => u.login == loginBox.Text && u.password == passTmp);
-
-
-                if (user == null)
-                {
-                    MessageBox.Show("Пользователь с такими данными не найдён!");
-                    return;
-                }
-
-                MessageBox.Show("Пользователь успешно найден!");
-
-                switch (user.role)
-                {
-                    case "Admin":
-                        NavigationService?.Navigate(new AdminMenu());
-                        break;
-                    case "Reader":
-                        NavigationService?.Navigate(new UserMenu());
-                        break;
-                    case "Librarian":
-                        NavigationService?.Navigate(new LibrarianMenu());
-                        break;
-                    default:
-                        MessageBox.Show("Ошибка! По каким-то причинам нам не удалось понять какая у вас роль... Пожалуйста, обратитесь к администратору");
-                        break;
-                }
             }
         }
         public string GetPasswordHash(string pswrd)
