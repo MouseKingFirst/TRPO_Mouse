@@ -37,11 +37,19 @@ namespace TRPO_Mouse.View.Pages
             }
             using (var db = new Entities())
             {
+                
+                if (db.Database.Connection.State != System.Data.ConnectionState.Open)
+                {
+                    MessageBox.Show("Ошибка! Отсутствует подключение к БД!");
+                    return;
+                }
                 string passTmp = GetPasswordHash(passwordBox.Password);
 
                 var user = db.library_users
-                    .AsNoTracking()
-                    .FirstOrDefault(u => u.login == loginBox.Text && u.password == passTmp);
+                .AsNoTracking()
+                .FirstOrDefault(u => u.login == loginBox.Text && u.password == passTmp);
+
+
                 if (user == null)
                 {
                     MessageBox.Show("Пользователь с такими данными не найдён!");
@@ -50,7 +58,7 @@ namespace TRPO_Mouse.View.Pages
 
                 MessageBox.Show("Пользователь успешно найден!");
 
-                switch(user.role)
+                switch (user.role)
                 {
                     case "Admin":
                         NavigationService?.Navigate(new AdminMenu());
