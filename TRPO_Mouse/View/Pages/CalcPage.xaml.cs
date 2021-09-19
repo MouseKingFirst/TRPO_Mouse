@@ -37,13 +37,20 @@ namespace TRPO_Mouse.View.Pages
             }
         }
 
-
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             // Получаем текст кнопки
             string s = (string)((Button)e.OriginalSource).Content;
             // Добавляем его в текстовое поле
-            textBlock.Text += s;
+            if (s == "10^x")
+            {
+                textBlock.Text += "10^";
+                rightop += "10";
+            }
+            else
+            {
+                textBlock.Text += s;
+            }
             int num;
             // Пытаемся преобразовать его в число
             bool result = Int32.TryParse(s, out num);
@@ -85,24 +92,20 @@ namespace TRPO_Mouse.View.Pages
                 {
                     // Если правый операнд уже имеется, то присваиваем его значение левому
                     // операнду, а правый операнд очищаем
-                    if (rightop != "")
-                    {
-                        Update_RightOp();
-                        leftop = rightop;
-                        rightop = "";
-                    }
+                    CalcIfNeed();
+
                     operation = s;
                 }
             }
         }
         // Обновляем значение правого операнда
-        private void Update_RightOp(string lastOper = "")
+        private void Update_RightOp()
         {
             int num1, num2;
             bool FsNum = Int32.TryParse(leftop, out num1);
-            bool ScNum = Int32.TryParse(leftop, out num2);
+            bool ScNum = Int32.TryParse(rightop, out num2);
 
-
+            
             // И выполняем операцию
             switch (operation)
             {
@@ -130,12 +133,18 @@ namespace TRPO_Mouse.View.Pages
                 case "10^x":
                     rightop = Math.Ceiling(Math.Pow(10, num2)).ToString();
                     break;
-                    
             }
         }
-        static int Factorial(int x)
+
+
+        private void CalcIfNeed()
         {
-            return (x == 0) ? 1 : x * Factorial(x - 1);
+            if (rightop != "")
+            {
+                Update_RightOp();
+                leftop = rightop;
+                rightop = "";
+            }
         }
     }
 }

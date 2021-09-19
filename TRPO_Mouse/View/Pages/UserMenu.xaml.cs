@@ -37,7 +37,7 @@ namespace TRPO_Mouse.View.Pages
 
         private void Button_Click2(object sender, RoutedEventArgs e)
         {
-            NavigationService?.Navigate(new Menu());
+            NavigationService?.Navigate(new CalcPage());
         }
     }
 }

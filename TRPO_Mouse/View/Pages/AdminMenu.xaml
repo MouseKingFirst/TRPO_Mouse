@@ -22,6 +22,6 @@
         <TextBlock Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" Text="Ваша роль: Администратор" HorizontalAlignment="Center"></TextBlock>
         <Button Content="Переход 1" Grid.Column="1" Grid.Row="1" VerticalAlignment="Top" Click="Button_Click"></Button>
         <Button Content="Переход 2" Grid.Column="1" Grid.Row="1" VerticalAlignment="Top" Margin="0, 25, 0, 0" Click="Button_Click1"></Button>
-        <Button Content="Переход 3" Grid.Column="1" Grid.Row="1" VerticalAlignment="Top" Margin="0, 50, 0, 0" Click="Button_Click2"></Button>
+        <Button Content="Калькулятор" Grid.Column="1" Grid.Row="1" VerticalAlignment="Top" Margin="0, 50, 0, 0" Click="Button_Click2"></Button>
     </Grid>
 </Page>
