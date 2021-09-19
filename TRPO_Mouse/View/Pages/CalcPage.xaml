@@ -6,8 +6,8 @@
       xmlns:local="clr-namespace:TRPO_Mouse.View.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="CalcPage">
-
+      Title="Калькулятор">
+    
     <Grid x:Name="LayoutRoot" Background="White">
         <Grid.RowDefinitions>
             <RowDefinition />
