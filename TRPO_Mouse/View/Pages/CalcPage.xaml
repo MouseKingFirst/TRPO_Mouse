@@ -7,8 +7,8 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="Калькулятор">
-    
-    <Grid x:Name="LayoutRoot" Background="White">
+
+    <Grid>
         <Grid.RowDefinitions>
             <RowDefinition />
             <RowDefinition />
@@ -22,33 +22,52 @@
             <ColumnDefinition />
             <ColumnDefinition />
             <ColumnDefinition />
+            <ColumnDefinition />
         </Grid.ColumnDefinitions>
-        <TextBlock x:Name="textBlock" Grid.Column="0" Grid.ColumnSpan="4" />
-        <Button Grid.Column="0" Grid.Row="1">1</Button>
-        <Button Grid.Column="1" Grid.Row="1">2</Button>
-        <Button Grid.Column="2" Grid.Row="1">3</Button>
-        <Button Grid.Column="3" Grid.Row="1">4</Button>
-        <Button Grid.Column="0" Grid.Row="2">5</Button>
-        <Button Grid.Column="1" Grid.Row="2">6</Button>
-        <Button Grid.Column="2" Grid.Row="2">7</Button>
-        <Button Grid.Column="3" Grid.Row="2">8</Button>
-        <Button Grid.Column="0" Grid.Row="3">9</Button>
-        <Button Grid.Column="1" Grid.Row="3">0</Button>
 
-        <!-- Далее идут действия -->
-        <Button Grid.Column="2" Grid.Row="3">+</Button>
-        <Button Grid.Column="3" Grid.Row="3">-</Button>
-        <Button Grid.Column="0" Grid.Row="4">*</Button>
-        <Button Grid.Column="1" Grid.Row="4">/</Button>
 
-        <Button Grid.Column="2" Grid.Row="4">=</Button>
-        <!-- Кастомные операции -->
+        <TextBox x:Name="textBox_Result" Grid.Column="0" Grid.ColumnSpan="5" TextAlignment="Right" CharacterCasing="Upper" Focusable="False">
+            <TextBox.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="0.078"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </TextBox.RenderTransform>
+        </TextBox>
 
-        <Button Grid.Column="3" Grid.Row="4">√</Button>
-        <Button Grid.Column="0" Grid.Row="5">log</Button>
-        <Button Grid.Column="1" Grid.Row="5">ln</Button>
-        <Button Grid.Column="2" Grid.Row="5">10^x</Button>
+        <!--Цифры -->
+        <Button x:Name="Button1" Grid.Row="1" Grid.Column="0" Content="1" Click="button_click"/>
+        <Button x:Name="Button2" Grid.Row="1" Grid.Column="1" Content="2" Click="button_click"/>
+        <Button x:Name="Button3" Grid.Row="1" Grid.Column="2" Content="3" Click="button_click"/>
+        
+        <Button x:Name="Button4" Grid.Row="2" Grid.Column="0" Content="4" Click="button_click"/>
+        <Button x:Name="Button5" Grid.Row="2" Grid.Column="1" Content="5" Click="button_click"/>
+        <Button x:Name="Button6" Grid.Row="2" Grid.Column="2" Content="6" Click="button_click"/>
+        
+        <Button x:Name="Button7" Grid.Row="3" Grid.Column="0" Content="7" Click="button_click"/>
+        <Button x:Name="Button8" Grid.Row="3" Grid.Column="1" Content="8" Click="button_click"/>
+        <Button x:Name="Button9" Grid.Row="3" Grid.Column="2" Content="9" Click="button_click"/>
+        
+        <Button x:Name="Button0" Grid.Row="4" Grid.Column="1" Content="0" Click="button_click"/>
 
-        <Button Grid.Column="3" Grid.Row="5">CLEAR</Button>
+        <Button x:Name="ClearCe" Grid.Row="2" Grid.Column="3" Content="CE" Click="ClearCe_Click"/>
+        <Button x:Name="ButtonC" Grid.Row="1" Grid.Column="3" Content="C" Click="ButtonC_Click"/>
+
+        <Button x:Name="ButtonTochka" Grid.Row="3" Grid.Column="3" Content="," Click="button_click"/>
+        <Button x:Name="ButtonRavno" Grid.Row="4" Grid.Column="3" Content="=" Click="ButtonRavno_Click"/>
+        <Button x:Name="ButtonPlus" Grid.Row="4" Grid.Column="2" Content="+" Click="operator_click"/>
+        <Button x:Name="ButtonMinus" Grid.Row="4" Grid.Column="0" Content="-" Click="operator_click"/>
+
+        <Button x:Name="ButtonDel" Grid.Row="1" Grid.Column="5" Content="÷" Click="operator_click"/>
+        <Button x:Name="ButtonYmnoj" Grid.Row="2" Grid.Column="5" Content="×" Click="operator_click"/>
+        
+        <Button x:Name="ButtonKoren" Grid.Row="3" Grid.Column="5" Content="√" Click="sqrtkor"/>
+        <Button x:Name="Buttonx2" Grid.Row="4" Grid.Column="5" Content="x²" Click="pow2"/>
+
+        <Button x:Name="Buttonx3" Grid.Row="5" Grid.Column="0" Content="x³" Click="pow3"/>
+        <Button x:Name="ButtonPlusMinus" Grid.Row="5" Grid.Column="1" Content="±" Click="operator_plusminus"/>
+
     </Grid>
 </Page>

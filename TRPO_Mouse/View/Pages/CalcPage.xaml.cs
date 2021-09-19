@@ -21,129 +21,162 @@ namespace TRPO_Mouse.View.Pages
     public partial class CalcPage : Page
     {
 
-        string leftop = ""; // Левый операнд
-        string operation = ""; // Знак операции
-        string rightop = ""; // Правый операнд
+        double resultValue = 0;
+        string operationPerformed = "";
+        bool isOperationPerformed = false;
+        bool isOperationDown = false;
 
         public CalcPage()
         {
             InitializeComponent();
-            foreach (UIElement c in LayoutRoot.Children)
-            {
-                if (c is Button)
-                {
-                    ((Button)c).Click += Button_Click;
-                }
-            }
-        }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        }
+        private void button_click(object sender, RoutedEventArgs e)
         {
-            // Получаем текст кнопки
-            string s = (string)((Button)e.OriginalSource).Content;
-            // Добавляем его в текстовое поле
-            if (s == "10^x")
+            Button button = (Button)sender;
+            if ((textBox_Result.Text == "0") && (button.Content.ToString() != ",") || (isOperationPerformed))
             {
-                textBlock.Text += "10^";
-                rightop += "10";
+                textBox_Result.Clear();
+                textBox_Result.Text = "0";
             }
-            else
+
+            isOperationPerformed = false;
+            if (button.Content.ToString() == ",")
             {
-                textBlock.Text += s;
-            }
-            int num;
-            // Пытаемся преобразовать его в число
-            bool result = Int32.TryParse(s, out num);
-            // Если текст - это число
-            if (result == true)
-            {
-                // Если операция не задана
-                if (operation == "")
+                if (!textBox_Result.Text.Contains(','))
                 {
-                    // Добавляем к левому операнду
-                    leftop += s;
+                    textBox_Result.Text = textBox_Result.Text + button.Content.ToString();
+                }
+                else if (isOperationPerformed == true)
+                {
+                    textBox_Result.Text = textBox_Result.Text + "0" + button.Content.ToString();
+                }
+                    
+            }
+            else if (button.Content.ToString() != "," && isOperationDown != true)
+            {
+                if (textBox_Result.Text != "0")
+                {
+                    textBox_Result.Text = textBox_Result.Text + button.Content.ToString();
                 }
                 else
                 {
-                    // Иначе к правому операнду
-                    rightop += s;
-                }
+                    textBox_Result.Text = button.Content.ToString();
+                }  
             }
-            // Если было введено не число
-            else
+                
+            else if (isOperationDown == true)
             {
-                // Если равно, то выводим результат операции
-                if (s == "=")
-                {
-                    Update_RightOp();
-                    textBlock.Text += rightop;
-                    operation = "";
-                }
-                // Очищаем поле и переменные
-                else if (s == "CLEAR")
-                {
-                    leftop = "";
-                    rightop = "";
-                    operation = "";
-                    textBlock.Text = "";
-                }
-                // Получаем операцию
-                else
-                {
-                    // Если правый операнд уже имеется, то присваиваем его значение левому
-                    // операнду, а правый операнд очищаем
-                    CalcIfNeed();
-
-                    operation = s;
-                }
+                isOperationDown = false;
+                textBox_Result.Text = button.Content.ToString();
             }
         }
-        // Обновляем значение правого операнда
-        private void Update_RightOp()
-        {
-            int num1, num2;
-            bool FsNum = Int32.TryParse(leftop, out num1);
-            bool ScNum = Int32.TryParse(rightop, out num2);
 
-            
-            // И выполняем операцию
-            switch (operation)
+        private void operator_click(object sender, RoutedEventArgs e)
+        {
+            Button button = (Button)sender;
+
+            if (resultValue != 0)
+            {
+                ButtonRavno_Click(ButtonRavno, null);
+                operationPerformed = button.Content.ToString();
+                isOperationPerformed = true;
+                textBox_Result.Text = resultValue + " " + operationPerformed;
+            }
+            else
+            {
+
+                operationPerformed = button.Content.ToString();
+                resultValue = double.Parse(textBox_Result.Text);
+                isOperationPerformed = true;
+                textBox_Result.Text = resultValue + " " + operationPerformed;
+            }
+        }
+
+        private void ClearCe_Click(object sender, RoutedEventArgs e)
+        {
+            textBox_Result.Text = "0";
+        }
+
+        private void ButtonC_Click(object sender, RoutedEventArgs e)
+        {
+            textBox_Result.Text = "0";
+            resultValue = 0;
+            textBox_Result.Text = "";
+        }
+
+        private void ButtonRavno_Click(object sender, RoutedEventArgs e)
+        {
+            switch (operationPerformed)
             {
                 case "+":
-                    rightop = (num1 + num2).ToString();
+                    textBox_Result.Text = (resultValue + double.Parse(textBox_Result.Text)).ToString();
                     break;
                 case "-":
-                    rightop = (num1 - num2).ToString();
+                    textBox_Result.Text = (resultValue - double.Parse(textBox_Result.Text)).ToString();
                     break;
-                case "*":
-                    rightop = (num1 * num2).ToString();
+                case "\u00D7":
+                    textBox_Result.Text = (resultValue * double.Parse(textBox_Result.Text)).ToString();
                     break;
-                case "/":
-                    rightop = (num1 / num2).ToString();
+                case "\u00F7":
+                    textBox_Result.Text = (resultValue / double.Parse(textBox_Result.Text)).ToString();
                     break;
-                case "√":
-                    rightop = Math.Ceiling(Math.Sqrt(num2)).ToString();
+                default:
                     break;
-                case "log":
-                    rightop = Math.Ceiling(Math.Log(num2)).ToString();
-                    break;
-                case "ln":
-                    rightop = Math.Ceiling(Math.Log(num2, Math.E)).ToString();
-                    break;
-                case "10^x":
-                    rightop = Math.Ceiling(Math.Pow(10, num2)).ToString();
-                    break;
+            }
+            operationPerformed = "";
+            isOperationDown = true;
+            resultValue = double.Parse(textBox_Result.Text);
+            
+
+        }
+
+
+        private void pow2(object sender, RoutedEventArgs e)
+        {
+            isOperationPerformed = true;
+            double temp = double.Parse(textBox_Result.Text);
+            textBox_Result.Text = (Math.Pow(double.Parse(textBox_Result.Text), 2)).ToString();
+            resultValue = double.Parse(textBox_Result.Text);
+        }
+
+        private void pow3(object sender, RoutedEventArgs e)
+        {
+            isOperationPerformed = true;
+            double temp = double.Parse(textBox_Result.Text);
+            textBox_Result.Text = (Math.Pow(double.Parse(textBox_Result.Text), 3)).ToString();
+            resultValue = double.Parse(textBox_Result.Text);
+
+        }
+
+        private void sqrtkor(object sender, RoutedEventArgs e)
+        {
+            isOperationPerformed = true;
+            if (double.Parse(textBox_Result.Text) > 0)
+            {
+                double temp = double.Parse(textBox_Result.Text);
+                textBox_Result.Text = (Math.Sqrt(double.Parse(textBox_Result.Text))).ToString();
+                resultValue = double.Parse(textBox_Result.Text);
             }
         }
 
 
-        private void CalcIfNeed()
+        private void operator_plusminus(object sender, RoutedEventArgs e)
         {
-            if (rightop != "")
+            double a = double.Parse(textBox_Result.Text);
+            if (a != 0)
             {
-                Update_RightOp();
-                leftop = rightop;
-                rightop = "";
+                a = (-1) * a;
+                string q = textBox_Result.Text;
+                if (a > 0)
+                {
+                    textBox_Result.Text = q.Substring(1, q.Length - 1);
+                }
+                else
+                {
+                    textBox_Result.Text = "-" + textBox_Result.Text;
+                }
+                resultValue = double.Parse(textBox_Result.Text);
             }
         }
     }
