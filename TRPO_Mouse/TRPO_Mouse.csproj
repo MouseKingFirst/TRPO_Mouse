@@ -70,6 +70,9 @@
     <Compile Include="View\Pages\AuthPage.xaml.cs">
       <DependentUpon>AuthPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Pages\CalcPage.xaml.cs">
+      <DependentUpon>CalcPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Pages\LibrarianMenu.xaml.cs">
       <DependentUpon>LibrarianMenu.xaml</DependentUpon>
     </Compile>
@@ -100,6 +103,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Pages\AuthPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Pages\CalcPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
