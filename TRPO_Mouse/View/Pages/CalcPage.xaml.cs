@@ -84,6 +84,8 @@ namespace TRPO_Mouse.View.Pages
                 operationPerformed = button.Content.ToString();
                 isOperationPerformed = true;
                 textBox_Result.Text = resultValue + " " + operationPerformed;
+
+                labelCurrentOperation.Content = resultValue + " " + operationPerformed;
             }
             else
             {
@@ -97,6 +99,8 @@ namespace TRPO_Mouse.View.Pages
                     resultValue = a;
                     isOperationPerformed = true;
                     textBox_Result.Text = resultValue + " " + operationPerformed;
+
+                    labelCurrentOperation.Content = resultValue + " " + operationPerformed;
                 }
             }
         }
@@ -111,6 +115,8 @@ namespace TRPO_Mouse.View.Pages
             textBox_Result.Text = "0";
             resultValue = 0;
             textBox_Result.Text = "";
+
+            labelCurrentOperation.Content = "";
         }
 
         private void ButtonRavno_Click(object sender, RoutedEventArgs e)
@@ -136,6 +142,7 @@ namespace TRPO_Mouse.View.Pages
             }
             operationPerformed = "";
             isOperationDown = true;
+            labelCurrentOperation.Content = "";
 
             bool isCorrect = double.TryParse(textBox_Result.Text, out resultValue);
             if (!isCorrect)
@@ -155,8 +162,12 @@ namespace TRPO_Mouse.View.Pages
 
             if (isCorrect)
             {
+                labelCurrentOperation.Content = a + "\u00B2" + " = ";
+
                 textBox_Result.Text = (Math.Pow(a, 2)).ToString();
                 resultValue = double.Parse(textBox_Result.Text);
+
+                
             }
         }
 
@@ -168,6 +179,8 @@ namespace TRPO_Mouse.View.Pages
 
             if (isCorrect)
             {
+                labelCurrentOperation.Content = a + "\u00B3" + " = ";
+
                 textBox_Result.Text = (Math.Pow(a, 3)).ToString();
                 resultValue = double.Parse(textBox_Result.Text);
             }
@@ -183,6 +196,8 @@ namespace TRPO_Mouse.View.Pages
             {
                 if (a > 0)
                 {
+                    labelCurrentOperation.Content = "\u221A" + a + " = ";
+
                     textBox_Result.Text = (Math.Sqrt(a)).ToString();
                     resultValue = double.Parse(textBox_Result.Text);
                 }
@@ -216,6 +231,7 @@ namespace TRPO_Mouse.View.Pages
             bool isCorrect = double.TryParse(textBox_Result.Text, out double a);
             if (isCorrect)
             {
+                labelCurrentOperation.Content = "log\u2082 " + a + " = ";
                 a = Math.Log(a);
                 textBox_Result.Text = a.ToString();
                 resultValue = double.Parse(textBox_Result.Text);
