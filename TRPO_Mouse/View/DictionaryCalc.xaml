@@ -9,18 +9,15 @@
         <Setter Property="FontFamily" Value="Tahoma"/>
         <Setter Property="FontSize" Value="12pt"/>
         <Setter Property="FontWeight" Value="Bold"/>
-        <Setter Property="Foreground" Value="#243238"/>
-        
-
+        <Setter Property="Background" Value="#960064"/>
     </Style>
     <Style TargetType="{x:Type Grid}">
         <Setter Property="Background" Value="White"/>
     </Style>
     <Style TargetType="{x:Type TextBlock}">
         <Setter Property="Height" Value="50px"/>
-        <Setter Property="Background" Value="#FFFFFF"/>
         <Setter Property="FontFamily" Value="Tahoma"/>
         <Setter Property="FontSize" Value="12pt"/>
-        <Setter Property="Foreground" Value="#546e7a"/>
+        <Setter Property="Foreground" Value="#243238"/>
     </Style>
 </ResourceDictionary>

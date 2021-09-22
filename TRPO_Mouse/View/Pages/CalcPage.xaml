@@ -26,17 +26,7 @@
         </Grid.ColumnDefinitions>
 
 
-        <TextBox x:Name="textBox_Result" Grid.Column="0" Grid.ColumnSpan="5" TextAlignment="Right" CharacterCasing="Upper" Focusable="False">
-            <TextBox.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform/>
-                    <SkewTransform/>
-                    <RotateTransform Angle="0.078"/>
-                    <TranslateTransform/>
-                </TransformGroup>
-            </TextBox.RenderTransform>
-        </TextBox>
-
+        <TextBox x:Name="textBox_Result" Grid.Column="0" Grid.ColumnSpan="5" TextAlignment="Right" CharacterCasing="Upper" Focusable="False"></TextBox>
         <!--Цифры -->
         <Button x:Name="Button1" Grid.Row="1" Grid.Column="0" Content="1" Click="button_click"/>
         <Button x:Name="Button2" Grid.Row="1" Grid.Column="1" Content="2" Click="button_click"/>
@@ -62,12 +52,13 @@
 
         <Button x:Name="ButtonDel" Grid.Row="1" Grid.Column="5" Content="÷" Click="operator_click"/>
         <Button x:Name="ButtonYmnoj" Grid.Row="2" Grid.Column="5" Content="×" Click="operator_click"/>
+
+        <Button x:Name="ButtonKoren" Grid.Row="3" Grid.Column="5" Content="√" Click="sqrtkor" Background="GreenYellow"/>
+        <Button x:Name="Buttonx2" Grid.Row="4" Grid.Column="5" Content="x²" Click="pow2" Background="GreenYellow"/>
+
+        <Button x:Name="Buttonx3" Grid.Row="5" Grid.Column="0" Content="x³" Click="pow3" Background="GreenYellow"/>
+        <Button x:Name="ButtonPlusMinus" Grid.Row="5" Grid.Column="1" Content="±" Click="operator_plusminus" Background="GreenYellow"/>
+        <Button x:Name="ButtonLog" Grid.Row="5" Grid.Column="2" Content="log" Click="log" Background="GreenYellow"/>
         
-        <Button x:Name="ButtonKoren" Grid.Row="3" Grid.Column="5" Content="√" Click="sqrtkor"/>
-        <Button x:Name="Buttonx2" Grid.Row="4" Grid.Column="5" Content="x²" Click="pow2"/>
-
-        <Button x:Name="Buttonx3" Grid.Row="5" Grid.Column="0" Content="x³" Click="pow3"/>
-        <Button x:Name="ButtonPlusMinus" Grid.Row="5" Grid.Column="1" Content="±" Click="operator_plusminus"/>
-
     </Grid>
 </Page>

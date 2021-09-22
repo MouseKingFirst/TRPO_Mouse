@@ -26,6 +26,7 @@ namespace TRPO_Mouse.View.Pages
         bool isOperationPerformed = false;
         bool isOperationDown = false;
 
+
         public CalcPage()
         {
             InitializeComponent();
@@ -38,6 +39,7 @@ namespace TRPO_Mouse.View.Pages
             {
                 textBox_Result.Clear();
                 textBox_Result.Text = "0";
+
             }
 
             isOperationPerformed = false;
@@ -45,7 +47,7 @@ namespace TRPO_Mouse.View.Pages
             {
                 if (!textBox_Result.Text.Contains(','))
                 {
-                    textBox_Result.Text = textBox_Result.Text + button.Content.ToString();
+                    textBox_Result.Text += button.Content.ToString();
                 }
                 else if (isOperationPerformed == true)
                 {
@@ -57,7 +59,7 @@ namespace TRPO_Mouse.View.Pages
             {
                 if (textBox_Result.Text != "0")
                 {
-                    textBox_Result.Text = textBox_Result.Text + button.Content.ToString();
+                    textBox_Result.Text += button.Content.ToString();
                 }
                 else
                 {
@@ -87,9 +89,15 @@ namespace TRPO_Mouse.View.Pages
             {
 
                 operationPerformed = button.Content.ToString();
-                resultValue = double.Parse(textBox_Result.Text);
-                isOperationPerformed = true;
-                textBox_Result.Text = resultValue + " " + operationPerformed;
+
+                bool isCorrect = double.TryParse(textBox_Result.Text, out double a);
+                if (isCorrect)
+                {
+                    
+                    resultValue = a;
+                    isOperationPerformed = true;
+                    textBox_Result.Text = resultValue + " " + operationPerformed;
+                }
             }
         }
 
@@ -107,6 +115,8 @@ namespace TRPO_Mouse.View.Pages
 
         private void ButtonRavno_Click(object sender, RoutedEventArgs e)
         {
+
+
             switch (operationPerformed)
             {
                 case "+":
@@ -126,7 +136,12 @@ namespace TRPO_Mouse.View.Pages
             }
             operationPerformed = "";
             isOperationDown = true;
-            resultValue = double.Parse(textBox_Result.Text);
+
+            bool isCorrect = double.TryParse(textBox_Result.Text, out resultValue);
+            if (!isCorrect)
+            {
+                return;
+            }
             
 
         }
@@ -135,36 +150,52 @@ namespace TRPO_Mouse.View.Pages
         private void pow2(object sender, RoutedEventArgs e)
         {
             isOperationPerformed = true;
-            double temp = double.Parse(textBox_Result.Text);
-            textBox_Result.Text = (Math.Pow(double.Parse(textBox_Result.Text), 2)).ToString();
-            resultValue = double.Parse(textBox_Result.Text);
+
+            bool isCorrect = double.TryParse(textBox_Result.Text, out double a);
+
+            if (isCorrect)
+            {
+                textBox_Result.Text = (Math.Pow(a, 2)).ToString();
+                resultValue = double.Parse(textBox_Result.Text);
+            }
         }
 
         private void pow3(object sender, RoutedEventArgs e)
         {
             isOperationPerformed = true;
-            double temp = double.Parse(textBox_Result.Text);
-            textBox_Result.Text = (Math.Pow(double.Parse(textBox_Result.Text), 3)).ToString();
-            resultValue = double.Parse(textBox_Result.Text);
 
+            bool isCorrect = double.TryParse(textBox_Result.Text, out double a);
+
+            if (isCorrect)
+            {
+                textBox_Result.Text = (Math.Pow(a, 3)).ToString();
+                resultValue = double.Parse(textBox_Result.Text);
+            }
         }
 
         private void sqrtkor(object sender, RoutedEventArgs e)
         {
             isOperationPerformed = true;
-            if (double.Parse(textBox_Result.Text) > 0)
+
+            bool isCorrect = double.TryParse(textBox_Result.Text, out double a);
+
+            if (isCorrect)
             {
-                double temp = double.Parse(textBox_Result.Text);
-                textBox_Result.Text = (Math.Sqrt(double.Parse(textBox_Result.Text))).ToString();
-                resultValue = double.Parse(textBox_Result.Text);
+                if (a > 0)
+                {
+                    textBox_Result.Text = (Math.Sqrt(a)).ToString();
+                    resultValue = double.Parse(textBox_Result.Text);
+                }
             }
         }
 
 
         private void operator_plusminus(object sender, RoutedEventArgs e)
         {
-            double a = double.Parse(textBox_Result.Text);
-            if (a != 0)
+
+            bool isCorrect = double.TryParse(textBox_Result.Text, out double a);
+
+            if (a != 0 && isCorrect)
             {
                 a = (-1) * a;
                 string q = textBox_Result.Text;
@@ -176,6 +207,17 @@ namespace TRPO_Mouse.View.Pages
                 {
                     textBox_Result.Text = "-" + textBox_Result.Text;
                 }
+                resultValue = double.Parse(textBox_Result.Text);
+            }
+        }
+
+        private void log(object sender, RoutedEventArgs e)
+        {
+            bool isCorrect = double.TryParse(textBox_Result.Text, out double a);
+            if (isCorrect)
+            {
+                a = Math.Log(a);
+                textBox_Result.Text = a.ToString();
                 resultValue = double.Parse(textBox_Result.Text);
             }
         }
