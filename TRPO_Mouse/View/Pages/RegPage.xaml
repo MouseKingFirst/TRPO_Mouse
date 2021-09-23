@@ -38,9 +38,15 @@
         <Label Content="Выберите роль" Grid.Column="1" Grid.Row="1" VerticalAlignment="Top" Height="25" Margin="0, 90, 0, 0"></Label>
 
         <ComboBox Name="roleList" Grid.Column="3" Grid.Row="1" VerticalAlignment="Top" Height="25" Margin="0, 90, 0, 0">
-            <TextBlock x:Name="Reader">Читатель</TextBlock>
-            <TextBlock x:Name="Librarian">Библиотекарь</TextBlock>
-            <TextBlock x:Name="Admin">Администратор</TextBlock>
+            <ComboBoxItem>
+                <TextBlock x:Name="Reader">Читатель</TextBlock> 
+            </ComboBoxItem>
+            <ComboBoxItem>
+                <TextBlock x:Name="Librarian">Библиотекарь</TextBlock>
+            </ComboBoxItem>
+            <ComboBoxItem>
+                <TextBlock x:Name="Admin">Администратор</TextBlock>
+            </ComboBoxItem>
         </ComboBox>
 
         <Label Content="Введите ФИО" Grid.Column="1" Grid.Row="1" VerticalAlignment="Top" Height="25" Margin="0, 120, 0, 0"></Label>
