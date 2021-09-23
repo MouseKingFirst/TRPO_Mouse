@@ -12,7 +12,6 @@
         <EntityTypeShape EntityType="libraryModel.library_sessions" Width="1.5" PointX="3" PointY="4.625" IsExpanded="true" />
         <EntityTypeShape EntityType="libraryModel.library_users" Width="1.5" PointX="0.75" PointY="5" IsExpanded="true" />
         <EntityTypeShape EntityType="libraryModel.library_users_data" Width="1.5" PointX="3" PointY="7.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="libraryModel.sysdiagrams" Width="1.5" PointX="9.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="libraryModel.library_books_relation" Width="1.5" PointX="5.25" PointY="1.75" IsExpanded="true" />
         <AssociationConnector Association="libraryModel.FK_library_books_library_authors1" ManuallyRouted="false" />
         <AssociationConnector Association="libraryModel.FK_library_book_example_library_users" ManuallyRouted="false" />

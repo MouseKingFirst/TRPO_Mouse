@@ -27,6 +27,19 @@ namespace TRPO_Mouse.View.Pages
         {
             InitializeComponent();
         }
+        public AuthPage(string login, string pass)
+        {
+            InitializeComponent();
+
+            if (login != "")
+            {
+                loginBox.Text = login;
+            }
+            if (pass != "")
+            {
+                passwordBox.Password = pass;
+            }
+        }
 
         private void ButtonLogin_Click(object sender, RoutedEventArgs e)
         {

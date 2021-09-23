@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
+
 using TRPO_Mouse.View.Pages;
 
 namespace TRPO_Mouse
@@ -50,6 +51,9 @@ namespace TRPO_Mouse
                 Application.Current.Resources.Clear();
                 // добавляем загруженный словарь ресурсов
                 Application.Current.Resources.MergedDictionaries.Add(resourceDict);
+
+                //Кнопка перехода на калькулятор
+                CalcBtn.Visibility = Visibility.Hidden;
             }
             else
             {
@@ -60,6 +64,9 @@ namespace TRPO_Mouse
                 Application.Current.Resources.Clear();
                 // добавляем загруженный словарь ресурсов
                 Application.Current.Resources.MergedDictionaries.Add(resourceDict);
+
+                //Кнопка перехода на калькулятор
+                CalcBtn.Visibility = Visibility.Visible;
             }
         }
 
@@ -69,6 +76,11 @@ namespace TRPO_Mouse
             {
                 mainFrame.GoBack();
             }
+        }
+
+        private void CalcBtn_Click(object sender, RoutedEventArgs e)
+        {
+            mainFrame.Navigate(new CalcPage());
         }
     }
 }

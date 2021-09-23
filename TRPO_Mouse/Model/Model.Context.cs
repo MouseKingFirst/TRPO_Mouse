@@ -32,7 +32,6 @@ namespace TRPO_Mouse.Model
         public virtual DbSet<library_sessions> library_sessions { get; set; }
         public virtual DbSet<library_users> library_users { get; set; }
         public virtual DbSet<library_users_data> library_users_data { get; set; }
-        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<library_books_relation> library_books_relation { get; set; }
     }
 }

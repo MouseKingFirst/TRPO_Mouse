@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Хранилище libraryModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="Хранилище libraryModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="__EFMigrationsHistory">
           <Key>
             <PropertyRef Name="MigrationId" />
@@ -93,16 +93,6 @@
           <Property Name="passport_series" Type="varchar" MaxLength="4" Nullable="false" />
           <Property Name="passport_number" Type="varchar" MaxLength="6" Nullable="false" />
         </EntityType>
-        <EntityType Name="sysdiagrams">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
-          <Property Name="principal_id" Type="int" Nullable="false" />
-          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="version" Type="int" />
-          <Property Name="definition" Type="varbinary(max)" />
-        </EntityType>
         <Association Name="FK_library_book_example_library_users">
           <End Role="library_users" Type="Self.library_users" Multiplicity="0..1" />
           <End Role="library_book_example" Type="Self.library_book_example" Multiplicity="*" />
@@ -178,7 +168,6 @@
           <EntitySet Name="library_sessions" EntityType="Self.library_sessions" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="library_users" EntityType="Self.library_users" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="library_users_data" EntityType="Self.library_users_data" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="library_books_relation" EntityType="Self.library_books_relation" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [library_books_relation].[ISBN] AS [ISBN], 
@@ -206,8 +195,7 @@
             <End Role="library_users_data" EntitySet="library_users_data" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="libraryModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -298,16 +286,6 @@
           <Property Name="passport_number" Type="String" MaxLength="6" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="library_users" Relationship="Self.FK_library_users_data_library_users" FromRole="library_users_data" ToRole="library_users" />
         </EntityType>
-        <EntityType Name="sysdiagrams">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="principal_id" Type="Int32" Nullable="false" />
-          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="version" Type="Int32" />
-          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
-        </EntityType>
         <EntityType Name="library_books_relation">
           <Key>
             <PropertyRef Name="ISBN" />
@@ -389,7 +367,6 @@
           <EntitySet Name="library_sessions" EntityType="Self.library_sessions" />
           <EntitySet Name="library_users" EntityType="Self.library_users" />
           <EntitySet Name="library_users_data" EntityType="Self.library_users_data" />
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
           <EntitySet Name="library_books_relation" EntityType="Self.library_books_relation" />
           <AssociationSet Name="FK_library_books_library_authors1" Association="Self.FK_library_books_library_authors1">
             <End Role="library_authors" EntitySet="library_authors" />
@@ -500,17 +477,6 @@
                 <ScalarProperty Name="apartment_number" ColumnName="apartment_number" />
                 <ScalarProperty Name="passport_series" ColumnName="passport_series" />
                 <ScalarProperty Name="passport_number" ColumnName="passport_number" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="sysdiagrams">
-            <EntityTypeMapping TypeName="libraryModel.sysdiagrams">
-              <MappingFragment StoreEntitySet="sysdiagrams">
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
-                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
-                <ScalarProperty Name="version" ColumnName="version" />
-                <ScalarProperty Name="definition" ColumnName="definition" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

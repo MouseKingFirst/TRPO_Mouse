@@ -14,6 +14,7 @@
         </Grid.RowDefinitions>
         <Rectangle Grid.Row="2" Fill="#FFF4F4F5" StrokeThickness="0"/>
         <Button x:Name="backBtn" Content="Назад" Grid.Row="0" HorizontalAlignment="Left" Margin="10,10,0,10" Width="75" Padding="0, 0, 0, 0" Height="auto" Click="backBtn_Click"/>
+        <Button x:Name="CalcBtn" Content="Калькулятор" Grid.Row="0" HorizontalAlignment="Right" Margin="0,10,10,10" Width="90" Padding="0, 0, 0, 0" Height="auto" Click="CalcBtn_Click"/>
         <Frame x:Name="mainFrame" Content="Frame" Grid.Row="1" Source="View/Pages/AuthPage.xaml" Navigated="mainFrame_Navigated" NavigationUIVisibility="Hidden"/>
     </Grid>
 </Window>
