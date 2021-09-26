@@ -21,6 +21,7 @@ using System.Diagnostics; //для запуска Блокнота
 using Microsoft.Win32; //для работы диалоговых окон открытия / сохранения файла
 
 using TRPO_Mouse.Model;
+using System.Text.RegularExpressions;
 
 namespace TRPO_Mouse
 {
@@ -92,7 +93,18 @@ namespace TRPO_Mouse
         private void ImportBtn_Click(object sender, RoutedEventArgs e)
         {
             //D:\Programming\VSProjects\TRPO_Mouse\TRPO_Mouse\bin\Debug
-            Import(true);
+            MessageBoxResult result = MessageBox.Show(
+                "Вывести в файл согласно заданию?",
+                "Сообщение",
+                MessageBoxButton.YesNo);
+            if (result == MessageBoxResult.Yes)
+            {
+                Import(true);
+            }
+            else
+            {
+                Import(false);
+            }
 
         }
 
@@ -117,11 +129,16 @@ namespace TRPO_Mouse
         private void Export(bool type)
         {
 
-            string path = "export.txt";
-            StreamWriter sw = new StreamWriter(path);
+
+            SaveFileDialog saveFileDialog1 = new SaveFileDialog();
+            saveFileDialog1.Filter = "Text files(*.txt)|*.txt|All files(*.*)|*.*";
+
+            //string path = "export.txt";
+            //StreamWriter sw = new StreamWriter(path);
+
+
             using (var db = new Entities())
             {
-
                 if (!type)
                 {
                     //чем-то похоже на json
@@ -135,10 +152,20 @@ namespace TRPO_Mouse
                         Fio = x.library_users_data.last_name + " " + x.library_users_data.first_name + " " + x.library_users_data.middle_name
                     }
                     );
-                    foreach (var str in JsonQuery)
+
+                    if (saveFileDialog1.ShowDialog() == true)
                     {
-                        sw.WriteLine(str);
+                        string filename = saveFileDialog1.FileName;
+                        foreach (var str in JsonQuery)
+                        {
+                            File.AppendAllText(filename, str.ToString() + '\n');
+
+
+                            //sw.WriteLine(str);
+                        }
                     }
+
+
 
                 }
                 else
@@ -149,24 +176,37 @@ namespace TRPO_Mouse
                     string password = String.Join(":", db.library_users.Select(x => x.password));
                     string email = String.Join(":", db.library_users.Select(x => x.email));
                     string role = String.Join(":", db.library_users.Select(x => x.role));
+
                     //Теперь надо получить ФИО
 
                     string FullName = String.Join(":", db.library_users.Select(x => x.library_users_data.last_name + " " + x.library_users_data.first_name + " " + x.library_users_data.middle_name));
+                    if (saveFileDialog1.ShowDialog() == true)
+                    {
+                        string filename = saveFileDialog1.FileName;
+                        File.WriteAllText(filename, IDline + '\n' + login + '\n' + password + '\n' + email + '\n' + role + '\n' + FullName + '\n');
 
 
-                    sw.WriteLine(IDline);
-                    sw.WriteLine(login);
-                    sw.WriteLine(password);
-                    sw.WriteLine(email);
-                    sw.WriteLine(role);
-                    sw.WriteLine(FullName);
+
+                        //System.IO.File.WriteAllText(filename, login);
+                        //System.IO.File.WriteAllText(filename, password);
+                        //System.IO.File.WriteAllText(filename, email);
+                        //System.IO.File.WriteAllText(filename, role);
+                        //System.IO.File.WriteAllText(filename, FullName);
+                    }
+
+                    //sw.WriteLine(IDline);
+                    //sw.WriteLine(login);
+                    //sw.WriteLine(password);
+                    //sw.WriteLine(email);
+                    //sw.WriteLine(role);
+                    //sw.WriteLine(FullName);
                 }
             }
 
 
-            sw.Close();
+            //sw.Close();
 
-            Process.Start("notepad.exe", path);
+            //Process.Start("notepad.exe", path);
         }
 
         private void Import(bool type)
@@ -178,9 +218,30 @@ namespace TRPO_Mouse
                 StreamReader sr = new StreamReader(ofd.FileName); // открываем файл
                 while (!sr.EndOfStream) // перебираем строки, пока они не закончены
                 {
-
                     
+                    string line = sr.ReadLine(); // читаем строку  
+                    string[] data = line.Split();
+                    if (data.Length >= 1) // проверяем на целостность данных  
+                    {
+                        if (type)
+                        {
+                            data = line.Split(' ');
+
+                            MessageBox.Show("Данные в файле: \nIDline: " + data[0] + "\nlogin: " + data[1] + "\npassword: " + data[2] + "\nemail: " + data[3] + "\nrole: " + data[4] + "\nFullName: " + data[5] + ' ' + data[6] + ' ' + data[7]);
+
+
+                        }
+                        else
+                        {
+                            line = line.Replace(" ", "");
+                            data = line.Split(',');
+                            string[] temp = Regex.Split(data[5], @"(?<!^)(?=[А-Я]|[A-Z])");
+                            MessageBox.Show(String.Format("Данные в файле:\n{0}\n{1}\n{2}\n{3}\n{4}\n{5}", data[0], data[1], data[2], data[3], data[4],temp[0] + ' ' +temp[1]+' '+temp[2]+' '+temp[3]));
+                        }
+                    }
+
                 }
+
 
             }
             else
@@ -189,5 +250,6 @@ namespace TRPO_Mouse
             }
 
         }
+
     }
 }
