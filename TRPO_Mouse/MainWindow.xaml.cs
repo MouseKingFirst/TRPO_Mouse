@@ -16,6 +16,12 @@ using System.Windows.Shapes;
 
 using TRPO_Mouse.View.Pages;
 
+using System.IO; //для осуществления чтения/записи в файл
+using System.Diagnostics; //для запуска Блокнота
+using Microsoft.Win32; //для работы диалоговых окон открытия / сохранения файла
+
+using TRPO_Mouse.Model;
+
 namespace TRPO_Mouse
 {
     /// <summary>
@@ -81,6 +87,107 @@ namespace TRPO_Mouse
         private void CalcBtn_Click(object sender, RoutedEventArgs e)
         {
             mainFrame.Navigate(new CalcPage());
+        }
+
+        private void ImportBtn_Click(object sender, RoutedEventArgs e)
+        {
+            //D:\Programming\VSProjects\TRPO_Mouse\TRPO_Mouse\bin\Debug
+            Import(true);
+
+        }
+
+        private void ExportBtn_Click(object sender, RoutedEventArgs e)
+        {
+
+            MessageBoxResult result = MessageBox.Show(
+                "Вывести в файл согласно заданию?",
+                "Сообщение",
+                MessageBoxButton.YesNo);
+            if (result == MessageBoxResult.Yes)
+            {
+                Export(true);
+            }
+            else
+            {
+                Export(false);
+            }
+
+        }
+
+        private void Export(bool type)
+        {
+
+            string path = "export.txt";
+            StreamWriter sw = new StreamWriter(path);
+            using (var db = new Entities())
+            {
+
+                if (!type)
+                {
+                    //чем-то похоже на json
+                    var JsonQuery = db.library_users.Select(x => new
+                    {
+                        x.id,
+                        x.login,
+                        x.password,
+                        x.email,
+                        x.role,
+                        Fio = x.library_users_data.last_name + " " + x.library_users_data.first_name + " " + x.library_users_data.middle_name
+                    }
+                    );
+                    foreach (var str in JsonQuery)
+                    {
+                        sw.WriteLine(str);
+                    }
+
+                }
+                else
+                {
+
+                    string IDline = String.Join(":", db.library_users.Select(x => x.id));
+                    string login = String.Join(":", db.library_users.Select(x => x.login));
+                    string password = String.Join(":", db.library_users.Select(x => x.password));
+                    string email = String.Join(":", db.library_users.Select(x => x.email));
+                    string role = String.Join(":", db.library_users.Select(x => x.role));
+                    //Теперь надо получить ФИО
+
+                    string FullName = String.Join(":", db.library_users.Select(x => x.library_users_data.last_name + " " + x.library_users_data.first_name + " " + x.library_users_data.middle_name));
+
+
+                    sw.WriteLine(IDline);
+                    sw.WriteLine(login);
+                    sw.WriteLine(password);
+                    sw.WriteLine(email);
+                    sw.WriteLine(role);
+                    sw.WriteLine(FullName);
+                }
+            }
+
+
+            sw.Close();
+
+            Process.Start("notepad.exe", path);
+        }
+
+        private void Import(bool type)
+        {
+            OpenFileDialog ofd = new OpenFileDialog();
+            ofd.ShowDialog();
+            if (ofd.FileName != "") // проверка на выбор файла
+            {
+                StreamReader sr = new StreamReader(ofd.FileName); // открываем файл
+                while (!sr.EndOfStream) // перебираем строки, пока они не закончены
+                {
+
+                    
+                }
+
+            }
+            else
+            {
+                MessageBox.Show("Файл для импорта не выбран!");
+            }
+
         }
     }
 }

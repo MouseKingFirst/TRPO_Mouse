@@ -13,8 +13,23 @@
             <RowDefinition Height="42"></RowDefinition>
         </Grid.RowDefinitions>
         <Rectangle Grid.Row="2" Fill="#FFF4F4F5" StrokeThickness="0"/>
-        <Button x:Name="backBtn" Content="Назад" Grid.Row="0" HorizontalAlignment="Left" Margin="10,10,0,10" Width="75" Padding="0, 0, 0, 0" Height="auto" Click="backBtn_Click"/>
-        <Button x:Name="CalcBtn" Content="Калькулятор" Grid.Row="0" HorizontalAlignment="Right" Margin="0,10,10,10" Width="90" Padding="0, 0, 0, 0" Height="auto" Click="CalcBtn_Click"/>
+        <Grid Grid.Row="0" Grid.Column="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+
+
+            <Button x:Name="backBtn" Content="Назад" Grid.Column="0" HorizontalAlignment="Left" Margin="10,10,0,10" Width="75" Padding="0, 0, 0, 0" Height="auto" Click="backBtn_Click"/>
+            <Button x:Name="CalcBtn" Content="Калькулятор" Grid.Column="3" HorizontalAlignment="Right" Margin="0,10,10,10" Width="90" Padding="0, 0, 0, 0" Height="auto" Click="CalcBtn_Click"/>
+
+            <Button x:Name="ImportBtn" Content="Импорт" Grid.Column="1" HorizontalAlignment="Left" Margin="0,10,10,10" Width="90" Padding="0, 0, 0, 0" Height="auto" Click="ImportBtn_Click"/>
+            <Button x:Name="ExportBtn" Content="Экспорт" Grid.Column="2" HorizontalAlignment="Center" Margin="0,10,10,10" Width="90" Padding="0, 0, 0, 0" Height="auto" Click="ExportBtn_Click"/>
+
+        </Grid>
+       
         <Frame x:Name="mainFrame" Content="Frame" Grid.Row="1" Source="View/Pages/AuthPage.xaml" Navigated="mainFrame_Navigated" NavigationUIVisibility="Hidden"/>
     </Grid>
 </Window>
