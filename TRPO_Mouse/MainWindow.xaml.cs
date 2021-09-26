@@ -225,7 +225,10 @@ namespace TRPO_Mouse
                     {
                         if (type)
                         {
-                            data = line.Split(' ');
+                            data = line.Split(' '); // Разделение по заданию, можно задать любое в зависимости от формата файла
+                                                    // Можно поставить ':', но тогда файл должен иметь вид:
+                                                    // 2:admin:83455DGDhdg4:3434@mail.ru:admin:Pavel PP
+                                                    // и так каждая строка
 
                             MessageBox.Show("Данные в файле: \nIDline: " + data[0] + "\nlogin: " + data[1] + "\npassword: " + data[2] + "\nemail: " + data[3] + "\nrole: " + data[4] + "\nFullName: " + data[5] + ' ' + data[6] + ' ' + data[7]);
 
