@@ -92,134 +92,55 @@ namespace TRPO_Mouse
 
         private void ImportBtn_Click(object sender, RoutedEventArgs e)
         {
-            //D:\Programming\VSProjects\TRPO_Mouse\TRPO_Mouse\bin\Debug
-            MessageBoxResult result = MessageBox.Show(
-                "Вывести в файл согласно заданию?",
-                "Сообщение",
-                MessageBoxButton.YesNo);
-            if (result == MessageBoxResult.Yes)
-            {
-                Import(true);
-            }
-            else
-            {
-                Import(false);
-            }
+            Import();
 
         }
 
         private void ExportBtn_Click(object sender, RoutedEventArgs e)
         {
 
-            MessageBoxResult result = MessageBox.Show(
-                "Вывести в файл согласно заданию?",
-                "Сообщение",
-                MessageBoxButton.YesNo);
-            if (result == MessageBoxResult.Yes)
-            {
-                Export(true);
-            }
-            else
-            {
-                Export(false);
-            }
-
+            Export();
         }
 
-        private void Export(bool type)
+        private void Export()
         {
 
 
             SaveFileDialog saveFileDialog1 = new SaveFileDialog();
             saveFileDialog1.Filter = "Text files(*.txt)|*.txt|All files(*.*)|*.*";
 
-            //string path = "export.txt";
-            //StreamWriter sw = new StreamWriter(path);
-
 
             using (var db = new Entities())
             {
-                if (!type)
+
+                string saveText;
+
+                if (saveFileDialog1.ShowDialog() == true)
                 {
 
-                    //чем-то похоже на json
-                    var JsonQuery = db.library_users.Select(x => new
+
+                    string filename = saveFileDialog1.FileName;
+
+                    MessageBoxResult result = MessageBox.Show(
+                                            "Очистить файл?",
+                                            "Сообщение",
+                                            MessageBoxButton.YesNo);
+                    if (result == MessageBoxResult.Yes)
                     {
-                        x.id,
-                        x.login,
-                        x.password,
-                        x.email,
-                        x.role,
-                        Fio = x.library_users_data.last_name + " " + x.library_users_data.first_name + " " + x.library_users_data.middle_name
-                    }
-                    );
-
-                    if (saveFileDialog1.ShowDialog() == true)
-                    {
-                        string filename = saveFileDialog1.FileName;
-                        foreach (var str in JsonQuery)
-                        {
-                            File.AppendAllText(filename, str.ToString() + '\n');
-
-
-                            //sw.WriteLine(str);
-                        }
+                        File.WriteAllText(filename, "");
                     }
 
 
-
-                }
-                else
-                {
-                    string saveText;
-                   
-                    //string IDline = String.Join(":", db.library_users.Select(x => x.id));
-                    //string login = String.Join(":", db.library_users.Select(x => x.login));
-                    //string password = String.Join(":", db.library_users.Select(x => x.password));
-                    //string email = String.Join(":", db.library_users.Select(x => x.email));
-                    //string role = String.Join(":", db.library_users.Select(x => x.role));
-
-                    //Теперь надо получить ФИО
-
-                    //string FullName = String.Join(":", db.library_users.Select(x => x.library_users_data.last_name + " " + x.library_users_data.first_name + " " + x.library_users_data.middle_name));
-                    
-                    if (saveFileDialog1.ShowDialog() == true)
+                    foreach (var x in db.library_users)
                     {
-                        string filename = saveFileDialog1.FileName;
-                        foreach (var x in db.library_users)
-                        {
-                            saveText = String.Join(":", x.id, x.login,x.password, x.email, x.role, x.library_users_data.last_name, x.library_users_data.first_name, x.library_users_data.middle_name);
-                            File.AppendAllText(filename, saveText + '\n');
-                        }
-
-                       // string filename = saveFileDialog1.FileName;
-                        //File.WriteAllText(filename, IDline + '\n' + login + '\n' + password + '\n' + email + '\n' + role + '\n' + FullName + '\n');
-
-
-
-                        //System.IO.File.WriteAllText(filename, login);
-                        //System.IO.File.WriteAllText(filename, password);
-                        //System.IO.File.WriteAllText(filename, email);
-                        //System.IO.File.WriteAllText(filename, role);
-                        //System.IO.File.WriteAllText(filename, FullName);
+                        saveText = String.Join(":", x.id, x.login, x.password, x.email, x.role, x.library_users_data.last_name, x.library_users_data.first_name, x.library_users_data.middle_name);
+                        File.AppendAllText(filename, saveText + '\n');
                     }
-
-                    //sw.WriteLine(IDline);
-                    //sw.WriteLine(login);
-                    //sw.WriteLine(password);
-                    //sw.WriteLine(email);
-                    //sw.WriteLine(role);
-                    //sw.WriteLine(FullName);
                 }
             }
-
-
-            //sw.Close();
-
-            //Process.Start("notepad.exe", path);
         }
 
-        private void Import(bool type)
+        private void Import()
         {
             OpenFileDialog ofd = new OpenFileDialog();
             ofd.ShowDialog();
@@ -234,44 +155,23 @@ namespace TRPO_Mouse
 
                     if (data.Length >= 1) // проверяем на целостность данных  
                     {
-                        if (type)
+                        data = line.Split(':'); // Разделение по заданию, можно задать любое в зависимости от формата файла
+                                                // Можно поставить ':', но тогда файл должен иметь вид:
+                                                // 2:admin:83455DGDhdg4:3434@mail.ru:admin:Pavel PP
+                                                // и так каждая строка
+                        try
                         {
-                            data = line.Split(':'); // Разделение по заданию, можно задать любое в зависимости от формата файла
-                                                    // Можно поставить ':', но тогда файл должен иметь вид:
-                                                    // 2:admin:83455DGDhdg4:3434@mail.ru:admin:Pavel PP
-                                                    // и так каждая строка
-                            try
-                            {
-                                MessageBox.Show("Данные в файле: \nIDline: " + data[0] + "\nlogin: " + data[1] + "\npassword: " + data[2] + "\nemail: " + data[3] + "\nrole: " + data[4] + "\nFullName: " + data[5] + ' ' + data[6] + ' ' + data[7]);
-                            }
-                            catch
-                            {
-                                MessageBox.Show("Ошибка при импорте данных,\nпроверьте формат txt файла");
-                                break;
-                            }
+                            MessageBox.Show("Данные в файле: \nIDline: " + data[0] + "\nlogin: " + data[1] + "\npassword: " + data[2] + "\nemail: " + data[3] + "\nrole: " + data[4] + "\nFullName: " + data[5] + ' ' + data[6] + ' ' + data[7]);
+                        }
+                        catch
+                        {
+                            MessageBox.Show("Ошибка при импорте данных,\nпроверьте формат txt файла");
+                            break;
+                        }
 
-                        }
-                        else
-                        {
-                            line = Regex.Replace(line, "[" + string.Join("", '{', '}',' ') + "]", "");
-                            //line = line.Replace(" ", "");
-                            data = line.Split(',');
-                            try
-                            {
-                                string[] temp = Regex.Split(data[5], @"(?<!^)(?=[А-Я]|[A-Z])"); 
-                                MessageBox.Show(String.Format("Данные в файле:\n{0}\n{1}\n{2}\n{3}\n{4}\n{5}", data[0], data[1], data[2], data[3], data[4], temp[0] + ' ' + temp[1] + ' ' + temp[2] + ' ' + temp[3]));
-                            }
-                            catch
-                            {
-                                MessageBox.Show("Ошибка при импорте данных,\nпроверьте формат txt файла");
-                                break;
-                            }
-                        }
                     }
 
                 }
-
-
             }
             else
             {
