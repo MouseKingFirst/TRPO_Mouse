@@ -136,6 +136,7 @@ namespace TRPO_Mouse
                         saveText = String.Join(":", x.id, x.login, x.password, x.email, x.role, x.library_users_data.last_name, x.library_users_data.first_name, x.library_users_data.middle_name);
                         File.AppendAllText(filename, saveText + '\n');
                     }
+                    Process.Start("notepad.exe", saveFileDialog1.FileName);
                 }
             }
         }
