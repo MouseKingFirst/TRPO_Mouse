@@ -161,7 +161,7 @@ namespace TRPO_Mouse
                                                 // и так каждая строка
                         try
                         {
-                            MessageBox.Show("Данные в файле: \nIDline: " + data[0] + "\nlogin: " + data[1] + "\npassword: " + data[2] + "\nemail: " + data[3] + "\nrole: " + data[4] + "\nFullName: " + data[5] + ' ' + data[6] + ' ' + data[7]);
+                            MessageBox.Show("Данные в файле: \nID: " + data[0] + "\nЛогин: " + data[1] + "\nПароль(хэшированный): " + data[2] + "\nE-mail: " + data[3] + "\nРоль: " + data[4] + "\nФИО: " + data[5] + ' ' + data[6] + ' ' + data[7]);
                         }
                         catch
                         {
