@@ -1,0 +1,44 @@
+﻿<Page x:Class="TRPO_Mouse.View.Pages.ViewAuthors"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:TRPO_Mouse.View.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="ViewAuthors">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="377*"/>
+            <RowDefinition Height="73*">
+            </RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="250*"></ColumnDefinition>
+                <ColumnDefinition  Width="250*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+        </Grid>
+
+        <DataGrid Grid.Row="0"   x:Name="gridAuthorsList" IsReadOnly="True" AutoGenerateColumns="False" Margin="0,41,0,0" Loaded="gridAuthorsList_Loaded" IsVisibleChanged="gridAuthorsList_IsVisibleChanged">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Id"
+                    Width="30*"
+                    Binding="{Binding id}"/>
+                <DataGridTextColumn Header="Фио"
+                    Width="75*" Binding="{Binding author_FullName}"/>
+                <DataGridTemplateColumn Width="105">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Name="ButtonEdit" Content="Редактировать" Click="ButtonEdit_Click"></Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button Grid.Column="0" MaxWidth="150"  Width="100" Height="20" Grid.Row="1" Name="ButtonAdd" Content="Добавить" Click="ButtonEdit_Click" VerticalAlignment="Bottom" Margin="0,0,670,25" HorizontalAlignment="Right"/>
+        <Button MaxWidth="150"  Width="100" Grid.Row="1" Name="ButtonDel" Content="Удалить"  Margin="653,0,0,25" Height="20" VerticalAlignment="Bottom" HorizontalAlignment="Left"/>
+
+    </Grid>
+</Page>

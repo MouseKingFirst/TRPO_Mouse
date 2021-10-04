@@ -82,6 +82,28 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="View\Pages\AddEditAuthors.xaml.cs">
+      <DependentUpon>AddEditAuthors.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Pages\AddEditBooks.xaml.cs">
+      <DependentUpon>AddEditBooks.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Pages\AddEditReader.xaml.cs">
+      <DependentUpon>AddEditReader.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Pages\AddEditUsers.xaml.cs">
+      <DependentUpon>AddEditUsers.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Pages\ViewAuthors.xaml.cs">
+      <DependentUpon>ViewAuthors.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Pages\ViewBooks.xaml.cs">
+      <DependentUpon>ViewBooks.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Pages\ViewReaders.xaml.cs">
+      <DependentUpon>ViewReaders.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Util.cs" />
     <Compile Include="View\Pages\AdminMenu.xaml.cs">
       <DependentUpon>AdminMenu.xaml</DependentUpon>
     </Compile>
@@ -100,6 +122,9 @@
     <Compile Include="View\Pages\UserMenu.xaml.cs">
       <DependentUpon>UserMenu.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Pages\ViewUsers.xaml.cs">
+      <DependentUpon>ViewUsers.xaml</DependentUpon>
+    </Compile>
     <Page Include="View\Dictionary.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -117,6 +142,22 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="View\DictionaryCalc.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Pages\AddEditAuthors.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Pages\AddEditBooks.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Pages\AddEditReader.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Pages\AddEditUsers.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -141,6 +182,22 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Pages\UserMenu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Pages\ViewAuthors.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Pages\ViewBooks.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Pages\ViewReaders.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Pages\ViewUsers.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

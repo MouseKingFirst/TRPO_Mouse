@@ -262,7 +262,7 @@ namespace TRPO_Mouse.View.Pages
             }
         }
 
-        public string GetPasswordHash(string pswrd)
+        public static string GetPasswordHash(string pswrd)
         {
             /* Хэш для пароля... */
             byte[] data = Encoding.Default.GetBytes(pswrd);

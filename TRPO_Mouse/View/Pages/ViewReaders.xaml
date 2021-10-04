@@ -1,0 +1,64 @@
+﻿<Page x:Class="TRPO_Mouse.View.Pages.ViewReaders"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:TRPO_Mouse.View.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="550" d:DesignWidth="1150"
+      Title="ViewReaders">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="377*"/>
+            <RowDefinition Height="73*">
+            </RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="250*"></ColumnDefinition>
+                <ColumnDefinition  Width="250*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+        </Grid>
+
+        <DataGrid Grid.Row="0"   Name="gridReadersList" IsReadOnly="True" AutoGenerateColumns="False" Margin="0,41,0,0" Loaded="gridReadersList_Loaded" IsVisibleChanged="gridReadersList_IsVisibleChanged">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Id"
+                    Width="30"
+                    Binding="{Binding user_id}"/>
+                <DataGridTextColumn Header="Фамилия"
+                    Width="85" Binding="{Binding last_name}"/>
+                <DataGridTextColumn Header="Имя"
+                    Width="85" Binding="{Binding first_name}"/>
+                <DataGridTextColumn Header="Отчество"
+                    Width="85" Binding="{Binding middle_name}"/>
+                <DataGridTextColumn Header="Дата рождения"
+                    Width="100" Binding="{Binding birth_date , StringFormat='dd MMMM yyyy'}"/>
+                <DataGridTextColumn Header="Телефон"
+                    Width="90" Binding="{Binding phone_number}"/>
+                <DataGridTextColumn Header="Город"
+                    Width="70" Binding="{Binding city}"/>
+                <DataGridTextColumn Header="Улица"
+                    Width="70" Binding="{Binding street}"/>
+                <DataGridTextColumn Header="Номер дома"
+                    Width="105" Binding="{Binding house_number}"/>
+                <DataGridTextColumn Header="Номер квартиры"
+                    Width="105" Binding="{Binding apartment_number}"/>
+                <DataGridTextColumn Header="Серия паспорта"
+                    Width="100" Binding="{Binding passport_series}"/>
+                <DataGridTextColumn Header="Номер паспорта"
+                    Width="100" Binding="{Binding passport_number}"/>
+                <DataGridTemplateColumn Width="105">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Name="ButtonEdit" Content="Редактировать" Click="ButtonEdit_Click"></Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button Grid.Column="0" MaxWidth="150"  Width="100" Height="20" Grid.Row="1" Name="ButtonAdd" Content="Добавить" Click="ButtonEdit_Click" VerticalAlignment="Bottom" Margin="0,0,670,25" HorizontalAlignment="Right"/>
+        <Button MaxWidth="150"  Width="100" Grid.Row="1" Name="ButtonDel" Content="Удалить" Margin="653,0,0,25" Height="20" VerticalAlignment="Bottom" HorizontalAlignment="Left"/>
+
+    </Grid>
+</Page>

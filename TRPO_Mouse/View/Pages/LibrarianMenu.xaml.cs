@@ -39,5 +39,17 @@ namespace TRPO_Mouse.View.Pages
         {
             NavigationService?.Navigate(new CalcPage());
         }
+        private void Button_ViewReaders(object sender, RoutedEventArgs e)
+        {
+            NavigationService?.Navigate(new ViewReaders());
+        }
+        private void Button_ViewBooks(object sender, RoutedEventArgs e)
+        {
+            NavigationService?.Navigate(new ViewBooks());
+        }
+        private void Button_ViewAuthors(object sender, RoutedEventArgs e)
+        {
+            NavigationService?.Navigate(new ViewAuthors());
+        }
     }
 }
