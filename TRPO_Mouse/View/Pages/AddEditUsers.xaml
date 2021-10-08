@@ -20,10 +20,10 @@
             <ColumnDefinition Width="200"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        <TextBlock Text="Логин" Grid.Row="0" Grid.Column="0" Margin="10,0,0,0"/>
-        <TextBlock Text="Пароль" Grid.Row="1" Grid.Column="0" Margin="10,0,0,0"/>
-        <TextBlock Text="E-mail" Grid.Row="2" Grid.Column="0" Margin="10,0,0,0"/>
-        <TextBlock Text="Роль" Grid.Row="3" Grid.Column="0" Margin="10,0,0,0"/>
+        <TextBlock Text="Логин" Grid.Row="0" Grid.Column="0" Margin="10,0,0,0" VerticalAlignment="Center"/>
+        <TextBlock Text="Пароль" Grid.Row="1" Grid.Column="0" Margin="10,0,0,0" VerticalAlignment="Center"/>
+        <TextBlock Text="E-mail" Grid.Row="2" Grid.Column="0" Margin="10,0,0,0" VerticalAlignment="Center"/>
+        <TextBlock Text="Роль" Grid.Row="3" Grid.Column="0" Margin="10,0,0,0" VerticalAlignment="Center"/>
         <TextBox Text="{Binding login}" Width="350" Height="25" Grid.Row="0" Grid.Column="1"/>
         <TextBox x:Name="passwordBox" Text="{Binding password}" Width="350" Height="25" Grid.Row="1" Grid.Column="1"/>
         <TextBox Text="{Binding email}" Width="350" Height="25"  Grid.Row="2" Grid.Column="1"/>

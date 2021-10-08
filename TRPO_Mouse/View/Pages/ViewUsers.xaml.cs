@@ -51,6 +51,8 @@ namespace TRPO_Mouse.View.Pages
             if (Visibility == Visibility.Visible)
             {
                 Util.db.ChangeTracker.Entries().ToList().ForEach(x => x.Reload());
+
+
                 gridUsersList.ItemsSource = Util.db.library_users.ToList();
             }
         }

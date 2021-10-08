@@ -27,17 +27,17 @@
             <ColumnDefinition Width="200"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        <TextBlock Text="Фамилия" Grid.Column="0" Margin="0,4,0,0" TextAlignment="Center"/>
-        <TextBlock Text="Имя" Grid.Row="1" Grid.Column="0" TextAlignment="Center"/>
-        <TextBlock Text="Отчество" Grid.Row="2" Grid.Column="0" TextAlignment="Center" />
-        <TextBlock Text="Дата рождение" Grid.Row="3" Grid.Column="0" TextAlignment="Center"/>
-        <TextBlock Text="Телефон" Grid.Row="4" Grid.Column="0" TextAlignment="Center" />
-        <TextBlock Text="Город" Grid.Row="5" Grid.Column="0" TextAlignment="Center"/>
-        <TextBlock Text="Улица" Grid.Row="6" Grid.Column="0" TextAlignment="Center" />
-        <TextBlock Text="Номер дома" Grid.Row="7" Grid.Column="0" TextAlignment="Center"/>
-        <TextBlock Text="Номер квартиры" Grid.Row="8" Grid.Column="0" TextAlignment="Center" />
-        <TextBlock Text="Серия паспорта" Grid.Row="9" Grid.Column="0" TextAlignment="Center"/>
-        <TextBlock Text="Номер паспорта" Grid.Row="10" Grid.Column="0" TextAlignment="Center" />
+        <TextBlock Text="Фамилия" Grid.Row="0"  Grid.Column="0" Margin="0,4,0,0" TextAlignment="Center" VerticalAlignment="Center"/>
+        <TextBlock Text="Имя" Grid.Row="1" Grid.Column="0" TextAlignment="Center" VerticalAlignment="Center"/>
+        <TextBlock Text="Отчество" Grid.Row="2" Grid.Column="0" TextAlignment="Center" VerticalAlignment="Center"/>
+        <TextBlock Text="Дата рождение" Grid.Row="3" Grid.Column="0" TextAlignment="Center" VerticalAlignment="Center"/>
+        <TextBlock Text="Телефон" Grid.Row="4" Grid.Column="0" TextAlignment="Center" VerticalAlignment="Center"/>
+        <TextBlock Text="Город" Grid.Row="5" Grid.Column="0" TextAlignment="Center" VerticalAlignment="Center"/>
+        <TextBlock Text="Улица" Grid.Row="6" Grid.Column="0" TextAlignment="Center" VerticalAlignment="Center"/>
+        <TextBlock Text="Номер дома" Grid.Row="7" Grid.Column="0" TextAlignment="Center" VerticalAlignment="Center"/>
+        <TextBlock Text="Номер квартиры" Grid.Row="8" Grid.Column="0" TextAlignment="Center" VerticalAlignment="Center"/>
+        <TextBlock Text="Серия паспорта" Grid.Row="9" Grid.Column="0" TextAlignment="Center" VerticalAlignment="Center"/>
+        <TextBlock Text="Номер паспорта" Grid.Row="10" Grid.Column="0" TextAlignment="Center" VerticalAlignment="Center"/>
         <TextBox  Grid.Row="0" Grid.Column="1" Margin="120,0" Height="29"/>
         <TextBox  Grid.Row="1" Grid.Column="1" Margin="120,0" Height="29"/>
         <TextBox  Grid.Row="2" Grid.Column="1" Margin="120,0" Height="29"/>

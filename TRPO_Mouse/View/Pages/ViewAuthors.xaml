@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:TRPO_Mouse.View.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="ViewAuthors">
+      Title="Таблица авторы">
 
     <Grid>
         <Grid.RowDefinitions>
@@ -25,7 +25,7 @@
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Id"
                     Width="30*"
-                    Binding="{Binding id}"/>
+                    Binding="{Binding author_code}"/>
                 <DataGridTextColumn Header="Фио"
                     Width="75*" Binding="{Binding author_FullName}"/>
                 <DataGridTemplateColumn Width="105">

@@ -25,15 +25,15 @@
             <ColumnDefinition Width="200"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        <TextBlock Text="ISBN" Grid.Column="0" Margin="0,4,0,0" TextAlignment="Center"/>
-        <TextBlock Text="Название" Grid.Row="1" Grid.Column="0" TextAlignment="Center"/>
-        <TextBlock Text="Автор" Grid.Row="2" Grid.Column="0" TextAlignment="Center" />
-        <TextBlock Text="Жанр" Grid.Row="3" Grid.Column="0" TextAlignment="Center"/>
-        <TextBlock Text="Издательство" Grid.Row="4" Grid.Column="0" TextAlignment="Center" />
-        <TextBlock Text="Место издание" Grid.Row="5" Grid.Column="0" TextAlignment="Center"/>
-        <TextBlock Text="Год издания" Grid.Row="6" Grid.Column="0" TextAlignment="Center" />
-        <TextBlock Text="Кол-во страниц" Grid.Row="7" Grid.Column="0" TextAlignment="Center"/>
-        <TextBlock Text="Цена" Grid.Row="8" Grid.Column="0" TextAlignment="Center" />
+        <TextBlock Text="ISBN" Grid.Column="0" Margin="0,4,0,0" TextAlignment="Center" VerticalAlignment="Center"/>
+        <TextBlock Text="Название" Grid.Row="1" Grid.Column="0" TextAlignment="Center" VerticalAlignment="Center"/>
+        <TextBlock Text="Автор" Grid.Row="2" Grid.Column="0" TextAlignment="Center" VerticalAlignment="Center"/>
+        <TextBlock Text="Жанр" Grid.Row="3" Grid.Column="0" TextAlignment="Center" VerticalAlignment="Center"/>
+        <TextBlock Text="Издательство" Grid.Row="4" Grid.Column="0" TextAlignment="Center" VerticalAlignment="Center"/>
+        <TextBlock Text="Место издание" Grid.Row="5" Grid.Column="0" TextAlignment="Center" VerticalAlignment="Center"/>
+        <TextBlock Text="Год издания" Grid.Row="6" Grid.Column="0" TextAlignment="Center" VerticalAlignment="Center"/>
+        <TextBlock Text="Кол-во страниц" Grid.Row="7" Grid.Column="0" TextAlignment="Center" VerticalAlignment="Center"/>
+        <TextBlock Text="Цена" Grid.Row="8" Grid.Column="0" TextAlignment="Center" VerticalAlignment="Center"/>
         <TextBox  Grid.Row="0" Grid.Column="1" Margin="120,0" Height="29"/>
         <TextBox  Grid.Row="1" Grid.Column="1" Margin="120,0" Height="29"/>
         <TextBox  Grid.Row="2" Grid.Column="1" Margin="120,0" Height="29"/>

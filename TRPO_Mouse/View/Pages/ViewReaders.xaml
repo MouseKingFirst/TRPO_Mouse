@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:TRPO_Mouse.View.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="550" d:DesignWidth="1150"
-      Title="ViewReaders">
+      Title="Таблица читатели">
 
     <Grid>
         <Grid.RowDefinitions>
