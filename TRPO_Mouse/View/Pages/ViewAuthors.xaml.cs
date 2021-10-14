@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using TRPO_Mouse.Model;
 
 namespace TRPO_Mouse.View.Pages
 {
@@ -39,7 +40,35 @@ namespace TRPO_Mouse.View.Pages
         }
         private void ButtonEdit_Click(object sender, RoutedEventArgs e)
         {
+            NavigationService?.Navigate(new AddEditAuthors((sender as Button).DataContext as library_authors));
+        }
+        private void ButtonAdd_Click(object sender, RoutedEventArgs e)
+        {
             NavigationService?.Navigate(new AddEditAuthors());
+        }
+        private void ButtonDel_Click(object sender, RoutedEventArgs e)
+        {
+            var RemovingAuthors = gridAuthorsList.SelectedItems.Cast<library_authors>().ToList();
+
+            if (MessageBox.Show($"Вы точно хотите удалить записи в количестве {RemovingAuthors.Count()} элементов?", "Внимание",
+                            MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+            {
+                try
+                {
+                    Util.db.library_authors.RemoveRange(RemovingAuthors);
+                    Util.db.SaveChanges();
+                    MessageBox.Show("Данные успешно удалены!");
+
+                    gridAuthorsList.ItemsSource = Util.db.library_authors.ToList();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message.ToString());
+                }
+
+            }
+
+
         }
 
     }

@@ -25,9 +25,7 @@ namespace TRPO_Mouse.View.Pages
     public partial class RegPage : Page
     {
 
-
-        List<string> errors = new List<string>();//Все ошибки
-
+        StringBuilder errors = new StringBuilder();
         public RegPage()
         {
             InitializeComponent();
@@ -35,46 +33,36 @@ namespace TRPO_Mouse.View.Pages
         }
         
 
-
         private void ButtonReg_Click(object sender, RoutedEventArgs e)
         {
             //Обнулим все ошибки
             errors.Clear();
-            ErrorText.Text = "";
 
             /* Проверки для логина */
             if (loginBox.Text.Length < 6 || loginBox.Text.Length > 16 || string.IsNullOrEmpty(loginBox.Text) || string.IsNullOrWhiteSpace(loginBox.Text))
             {
-                AddError("Логин должен быть от 6 до 16 символов и без пробелов!");
+                errors.AppendLine("Логин должен быть от 6 до 16 символов и без пробелов!");
             }
 
             for (int i = 0; i < loginBox.Text.Length; i++)
             {
                 if (loginBox.Text[i] >= 'А' && loginBox.Text[i] <= 'Я' || loginBox.Text[i] >= 'а' && loginBox.Text[i] <= 'я')
                 {
-                    AddError("Логин должен содержать английскую раскладку!");
+                    errors.AppendLine("Логин должен содержать английскую раскладку!");
                     break; //Нет смысла дальше смотреть
                 }
             }
-
-            if (errors.Count > 0)
-            {
-                ShowErrors();
-                return;
-            }
-
-
 
 
             /* Проверки для пароля */
             if (userPassword.Password.Length < 6 || string.IsNullOrEmpty(userPassword.Password) || string.IsNullOrWhiteSpace(userPassword.Password))
             {
-                AddError("Пароль должен быть от 6 и более символов и без пробелов!");
+                errors.AppendLine("Пароль должен быть от 6 и более символов и без пробелов!");
             }
             
             if (userPassword.Password != passwordRepeat.Password)
             {
-                AddError("Пароли должны совпадать!");
+                errors.AppendLine("Пароли должны совпадать!");
             }
 
             bool isHaveNum = false;
@@ -82,7 +70,7 @@ namespace TRPO_Mouse.View.Pages
             {
                 if (userPassword.Password[i] >= 'А' && userPassword.Password[i] <= 'Я' || userPassword.Password[i] >= 'а' && userPassword.Password[i] <= 'я')
                 {
-                    AddError("Пароль должен содержать английскую раскладку!");
+                    errors.AppendLine("Пароль должен содержать английскую раскладку!");
                     break; //Нет смысла дальше смотреть
                 }
                 
@@ -95,7 +83,7 @@ namespace TRPO_Mouse.View.Pages
 
             if (!isHaveNum)
             {
-                AddError("Пароль должен содержать хотя бы одну цифру!");
+                errors.AppendLine("Пароль должен содержать хотя бы одну цифру!");
             }                   
 
             /* Проверка ФИО */
@@ -104,12 +92,12 @@ namespace TRPO_Mouse.View.Pages
             //Тут переделать и сделать отдельный ввод для каждого реквизита
             if (FIO.Length < 2 || FIO.Length > 3)
             {
-                AddError("Введите ФИО (отчество не является обязательным)!");
+                errors.AppendLine("Введите ФИО (отчество не является обязательным)!");
             }
             // Сразу выкидываем ошибку, иначе на следующем этапе выйдем за пределы массива, а это не хорошо
-            if (errors.Count > 0)
+            if (errors.Length > 0)
             {
-                ShowErrors();
+                MessageBox.Show(errors.ToString());
                 return;
             }
 
@@ -119,10 +107,6 @@ namespace TRPO_Mouse.View.Pages
                 FIO[2] = "";
             }
             
-
-
-            
-
             string roleSelected = ""; //по умолчанию
 
             //Выбор роли на инглише, ибо в базе всё записывается на инглише
@@ -138,13 +122,13 @@ namespace TRPO_Mouse.View.Pages
                     roleSelected = "Reader";
                     break;
                 default:
-                    AddError("Выбрана некорректная роль!");
+                    errors.AppendLine("Выбрана некорректная роль!");
                     break;
             }
 
-            if (errors.Count > 0)
+            if (errors.Length > 0)
             {
-                ShowErrors();
+                MessageBox.Show(errors.ToString());
                 return;
             }
 
@@ -170,13 +154,13 @@ namespace TRPO_Mouse.View.Pages
 
                     if (user != null)
                     {
-                        AddError(String.Format("Пользователь с логином {0} уже существует!", loginBox.Text));
+                        errors.AppendLine(String.Format("Пользователь с логином {0} уже существует!", loginBox.Text));
                     }
 
                     //Вывод ошибок, вдруг есть
-                    if (errors.Count > 0)
+                    if (errors.Length > 0)
                     {
-                        ShowErrors();
+                        MessageBox.Show(errors.ToString());
                         return;
                     }
 
@@ -242,24 +226,6 @@ namespace TRPO_Mouse.View.Pages
             passwordRepeat.Password = "";
             roleList.SelectedIndex = 0;
             FIOBox.Text = "";
-        }
-        private void AddError(string err)
-        {
-            errors.Add(err);
-        }
-
-        private void ShowErrors()
-        {
-            /*
-             * 
-             * Вывод ошибок
-             * 
-             */
-
-            foreach (string err in errors)
-            {
-                ErrorText.Text += "Ошибка! " + err + "\n";
-            }
         }
 
         public static string GetPasswordHash(string pswrd)

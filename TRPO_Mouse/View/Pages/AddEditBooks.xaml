@@ -34,15 +34,25 @@
         <TextBlock Text="Год издания" Grid.Row="6" Grid.Column="0" TextAlignment="Center" VerticalAlignment="Center"/>
         <TextBlock Text="Кол-во страниц" Grid.Row="7" Grid.Column="0" TextAlignment="Center" VerticalAlignment="Center"/>
         <TextBlock Text="Цена" Grid.Row="8" Grid.Column="0" TextAlignment="Center" VerticalAlignment="Center"/>
-        <TextBox  Grid.Row="0" Grid.Column="1" Margin="120,0" Height="29"/>
-        <TextBox  Grid.Row="1" Grid.Column="1" Margin="120,0" Height="29"/>
-        <TextBox  Grid.Row="2" Grid.Column="1" Margin="120,0" Height="29"/>
-        <TextBox  Grid.Row="3" Grid.Column="1" Margin="120,0" Height="29"/>
-        <TextBox  Grid.Row="4" Grid.Column="1" Margin="120,0" Height="29"/>
-        <TextBox  Grid.Row="5" Grid.Column="1" Margin="120,0" Height="29"/>
-        <TextBox  Grid.Row="6" Grid.Column="1" Margin="120,0" Height="29"/>
-        <TextBox  Grid.Row="7" Grid.Column="1" Margin="120,0" Height="29"/>
-        <TextBox  Grid.Row="8" Grid.Column="1" Margin="120,0" Height="29"/>
+        <TextBox Text="{Binding ISBN}"  Grid.Row="0" Grid.Column="1" Margin="120,0" Height="29"/>
+        <TextBox Text="{Binding title}"  Grid.Row="1" Grid.Column="1" Margin="120,0" Height="29"/>
+        <ComboBox x:Name="authorsC" SelectedItem="{Binding Path=library_authors}" DisplayMemberPath="author_FullName"  Grid.Row="2" Grid.Column="1" Margin="120,0" Height="29">
+            <ComboBox.Style>
+                <Style TargetType="ComboBox">
+                    <Style.Triggers>
+                        <Trigger Property="SelectedItem" Value="{x:Null}">
+                            <Setter Property="SelectedIndex" Value="0"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </ComboBox.Style>
+        </ComboBox>
+        <TextBox Text="{Binding genre}"   Grid.Row="3" Grid.Column="1" Margin="120,0" Height="29"/>
+        <TextBox Text="{Binding publisher}"  Grid.Row="4" Grid.Column="1" Margin="120,0" Height="29"/>
+        <TextBox Text="{Binding publication_place}"  Grid.Row="5" Grid.Column="1" Margin="120,0" Height="29"/>
+        <TextBox Text="{Binding publication_year}"  Grid.Row="6" Grid.Column="1" Margin="120,0" Height="29"/>
+        <TextBox Text="{Binding pages}"  Grid.Row="7" Grid.Column="1" Margin="120,0" Height="29"/>
+        <TextBox Text="{Binding price}"  Grid.Row="8" Grid.Column="1" Margin="120,0" Height="29"/>
         <Button Name="ButtonSave" Content="Сохранить" Grid.Row="13" Grid.Column="1" Click="ButtonSave_Click" Margin="218,4,272,5"/>
 
     </Grid>

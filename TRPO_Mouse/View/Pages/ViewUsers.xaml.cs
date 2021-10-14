@@ -43,6 +43,26 @@ namespace TRPO_Mouse.View.Pages
 
         private void ButtonDel_Click(object sender, RoutedEventArgs e)
         {
+            var RemovingUser = gridUsersList.SelectedItems.Cast<library_users>().ToList();
+
+            if (MessageBox.Show($"Вы точно хотите удалить записи в количестве {RemovingUser.Count()} элементов?", "Внимание",
+                            MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+            {
+                try
+                {
+                    Util.db.library_users.RemoveRange(RemovingUser);
+                    Util.db.SaveChanges();
+                    MessageBox.Show("Данные успешно удалены!");
+
+                    gridUsersList.ItemsSource = Util.db.library_users.ToList();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message.ToString());
+                }
+
+            }
+
 
         }
 

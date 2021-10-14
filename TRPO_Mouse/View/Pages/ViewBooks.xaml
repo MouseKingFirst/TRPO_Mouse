@@ -53,8 +53,8 @@
                 </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
-        <Button Grid.Column="0" MaxWidth="150"  Width="100" Height="20" Grid.Row="1" Name="ButtonAdd" Content="Добавить" Click="ButtonEdit_Click" VerticalAlignment="Bottom" Margin="0,0,670,25" HorizontalAlignment="Right"/>
-        <Button MaxWidth="150"  Width="100" Grid.Row="1" Name="ButtonDel" Content="Удалить"  Margin="653,0,0,25" Height="20" VerticalAlignment="Bottom" HorizontalAlignment="Left"/>
+        <Button Grid.Column="0" MaxWidth="150"  Width="100" Height="20" Grid.Row="1" Name="ButtonAdd" Content="Добавить" Click="ButtonAdd_Click" VerticalAlignment="Bottom" Margin="0,0,670,25" HorizontalAlignment="Right"/>
+        <Button MaxWidth="150"  Width="100" Grid.Row="1" Name="ButtonDel" Content="Удалить" Click="ButtonDel_Click" Margin="653,0,0,25" Height="20" VerticalAlignment="Bottom" HorizontalAlignment="Left"/>
 
     </Grid>
 </Page>
