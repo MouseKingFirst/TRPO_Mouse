@@ -118,7 +118,22 @@ namespace TRPO_Mouse.View.Pages
 
             if (cur_user.id == 0 && cur_user != null)
             {
+                /*
+                 * Добавление пользователя
+                 * И проверка, существует ли такой пользователь или нет?
+                 */
 
+
+                var user = Util.db.library_users
+                                .AsNoTracking()
+                                .FirstOrDefault(u => u.login == loginBox.Text);
+                //Если пользователь с таким логином существует
+                if (user != null)
+                {
+                    errors.AppendLine(String.Format("Пользователь с логином {0} уже существует!", loginBox.Text));
+                    MessageBox.Show(errors.ToString());
+                    return;
+                }
                 Util.db.library_users.Add(cur_user);
             }
 
