@@ -26,6 +26,7 @@ namespace TRPO_Mouse.Model
         public string password { get; set; }
         public string email { get; set; }
         public string role { get; set; }
+        public string photo { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<library_book_example> library_book_example { get; set; }

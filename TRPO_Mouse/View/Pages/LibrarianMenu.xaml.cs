@@ -27,12 +27,12 @@ namespace TRPO_Mouse.View.Pages
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService?.Navigate(new RegPage());
+            NavigationService?.Navigate(new UserPage());
         }
 
         private void Button_Click1(object sender, RoutedEventArgs e)
         {
-            NavigationService?.Navigate(new AuthPage());
+            NavigationService?.Navigate(new AuthorsPage());
         }
 
         private void Button_Click2(object sender, RoutedEventArgs e)

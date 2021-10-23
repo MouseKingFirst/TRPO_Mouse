@@ -18,6 +18,7 @@
           </Key>
           <Property Name="author_code" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="author_FullName" Type="varchar" MaxLength="128" Nullable="false" />
+          <Property Name="photo" Type="varchar" MaxLength="255" />
         </EntityType>
         <EntityType Name="library_book_example">
           <Key>
@@ -75,6 +76,7 @@
           <Property Name="password" Type="varchar" MaxLength="128" Nullable="false" />
           <Property Name="email" Type="varchar" MaxLength="254" Nullable="false" />
           <Property Name="role" Type="varchar" MaxLength="32" Nullable="false" />
+          <Property Name="photo" Type="varchar" MaxLength="255" />
         </EntityType>
         <EntityType Name="library_users_data">
           <Key>
@@ -213,6 +215,7 @@
           <Property Name="author_code" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="author_FullName" Type="String" MaxLength="128" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="library_books" Relationship="Self.FK_library_books_library_authors1" FromRole="library_authors" ToRole="library_books" />
+          <Property Name="photo" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="library_book_example">
           <Key>
@@ -267,6 +270,7 @@
           <NavigationProperty Name="library_book_example" Relationship="Self.FK_library_book_example_library_users" FromRole="library_users" ToRole="library_book_example" />
           <NavigationProperty Name="library_sessions" Relationship="Self.FK_library_sessions_library_users" FromRole="library_users" ToRole="library_sessions" />
           <NavigationProperty Name="library_users_data" Relationship="Self.FK_library_users_data_library_users" FromRole="library_users" ToRole="library_users_data" />
+          <Property Name="photo" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="library_users_data">
           <Key>
@@ -406,6 +410,7 @@
           <EntitySetMapping Name="library_authors">
             <EntityTypeMapping TypeName="libraryModel.library_authors">
               <MappingFragment StoreEntitySet="library_authors">
+                <ScalarProperty Name="photo" ColumnName="photo" />
                 <ScalarProperty Name="author_code" ColumnName="author_code" />
                 <ScalarProperty Name="author_FullName" ColumnName="author_FullName" />
               </MappingFragment>
@@ -454,6 +459,7 @@
           <EntitySetMapping Name="library_users">
             <EntityTypeMapping TypeName="libraryModel.library_users">
               <MappingFragment StoreEntitySet="library_users">
+                <ScalarProperty Name="photo" ColumnName="photo" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="login" ColumnName="login" />
                 <ScalarProperty Name="password" ColumnName="password" />
