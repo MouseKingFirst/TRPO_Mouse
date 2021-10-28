@@ -12,9 +12,29 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="50"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <ListView Name="ListUser" Grid.Row="1" ScrollViewer.HorizontalScrollBarVisibility="Disabled" HorizontalContentAlignment="Center">
+        <WrapPanel Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center">
+            <Label Content="ФИО" Margin="0 0 10 0" VerticalAlignment="Center"></Label>
+            <TextBox x:Name="SearchText" Width="300" VerticalContentAlignment="Center" TextChanged="SearchText_TextChanged"></TextBox>
+            <Label Content="Сортировать ФИО" Margin="40 0 10 0" VerticalAlignment="Center"></Label>
+            <ComboBox x:Name="SortType" VerticalAlignment="Center" SelectionChanged="SortType_SelectionChanged">
+                <ComboBoxItem>
+                    <TextBlock x:Name="Descending">По убыванию</TextBlock>
+                </ComboBoxItem>
+                <ComboBoxItem>
+                    <TextBlock x:Name="Ascending">По возрастанию</TextBlock>
+                </ComboBoxItem>
+            </ComboBox>
+            <Label Content="Роль:" Margin="40 0 10 0" VerticalAlignment="Center"></Label>
+            <RadioButton x:Name="RoleNotSelected" GroupName="Roles" Content="Не выбрано" Margin="10 0 10 0" VerticalAlignment="Center" Checked="RB_Checked" Unchecked="RB_Checked"></RadioButton>
+            <RadioButton x:Name="RBReaders" GroupName="Roles" Content="Читатели" Margin="10 0 10 0" VerticalAlignment="Center" Checked="RB_Checked" Unchecked="RB_Checked"></RadioButton>
+            <RadioButton x:Name="RBLibrarians" GroupName="Roles" Content="Библиотекари" Margin="10 0 10 0" VerticalAlignment="Center" Checked="RB_Checked" Unchecked="RB_Checked"></RadioButton>
+            <RadioButton x:Name="RBAdmins" GroupName="Roles" Content="Администраторы" Margin="10 0 10 0" VerticalAlignment="Center" Checked="RB_Checked" Unchecked="RB_Checked"></RadioButton>
+            <Button Content="Очистить фильтр" Padding="3 0 3 0" Margin="10 0 10 0" Click="Button_Click" VerticalAlignment="Center"></Button>
+        </WrapPanel>
+        <ListView Name="ListUser" Grid.Row="2" ScrollViewer.HorizontalScrollBarVisibility="Disabled" HorizontalContentAlignment="Center">
             <ListView.ItemsPanel>
                 <ItemsPanelTemplate>
                     <WrapPanel Orientation="Horizontal" HorizontalAlignment="Center"></WrapPanel>
@@ -48,7 +68,7 @@
 
                             </Image.Source>
                         </Image>
-                        <TextBlock VerticalAlignment="Center" TextAlignment="Center" Width="450" Grid.Row="2" HorizontalAlignment="Center" FontSize="18" Text="{Binding  library_users.role}"/>
+                        <TextBlock VerticalAlignment="Center" TextAlignment="Center" Width="450" Grid.Row="2" HorizontalAlignment="Center" FontSize="18" Text="{Binding role}"/>
                     </Grid>
                 </DataTemplate>
             </ListView.ItemTemplate>

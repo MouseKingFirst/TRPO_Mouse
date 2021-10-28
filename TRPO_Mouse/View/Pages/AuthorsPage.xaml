@@ -11,9 +11,25 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="50"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <ListView Name="ListAuthors" Grid.Row="1" ScrollViewer.HorizontalScrollBarVisibility="Disabled" HorizontalContentAlignment="Center">
+        <WrapPanel Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center">
+            <Label Content="ФИО" Margin="0 0 10 0" VerticalAlignment="Center"></Label>
+            <TextBox x:Name="SearchText" Width="300" VerticalContentAlignment="Center" TextChanged="SearchText_TextChanged"></TextBox>
+            <Label Content="Сортировать ФИО" Margin="40 0 10 0" VerticalAlignment="Center"></Label>
+            <ComboBox x:Name="SortType" VerticalAlignment="Center" SelectionChanged="SortType_SelectionChanged">
+                <ComboBoxItem x:Name="CmbSorting">
+                    <TextBlock x:Name="Descending">По убыванию</TextBlock>
+                </ComboBoxItem>
+                <ComboBoxItem>
+                    <TextBlock x:Name="Ascending">По возрастанию</TextBlock>
+                </ComboBoxItem>
+            </ComboBox>
+            <CheckBox x:Name="WithPhoto" Content="Только с фотографиями" Margin="40 0 10 0" VerticalAlignment="Center" Checked="WithPhoto_Checked" Unchecked="WithPhoto_Checked"></CheckBox>
+            <Button Content="Очистить фильтр" Padding="3 0 3 0" Margin="10 0 10 0" Click="Button_Click" VerticalAlignment="Center"></Button>
+        </WrapPanel>
+        <ListView Name="ListAuthors" Grid.Row="2" ScrollViewer.HorizontalScrollBarVisibility="Disabled" HorizontalContentAlignment="Center">
             <ListView.ItemsPanel>
                 <ItemsPanelTemplate>
                     <WrapPanel Orientation="Horizontal" HorizontalAlignment="Center"></WrapPanel>
@@ -28,7 +44,6 @@
                             <RowDefinition Height="auto"></RowDefinition>
                         </Grid.RowDefinitions>
                         <TextBlock Text="{Binding author_FullName}" VerticalAlignment="Center" TextAlignment="Center" Width="450" Grid.Row="0" TextWrapping="Wrap" HorizontalAlignment="Center" FontSize="18" FontWeight="Bold"></TextBlock>
-
                         <Image Width="450" Grid.Row="1" Stretch="UniformToFill" HorizontalAlignment="Center" VerticalAlignment="Center">
                             <Image.Source>
                                 <Binding Path="photo">
