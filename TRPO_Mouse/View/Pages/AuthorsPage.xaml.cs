@@ -37,6 +37,7 @@ namespace TRPO_Mouse.View.Pages
 
             ListAuthors.ItemsSource = currentAuthors;
             SortType.SelectedIndex = 0;
+            WithPhoto.IsChecked = false;
             ListAuthors.ItemsSource = currentAuthors.OrderBy(x => x.author_FullName).ToList();
         }
 
