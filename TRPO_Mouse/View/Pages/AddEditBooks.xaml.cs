@@ -96,5 +96,102 @@ namespace TRPO_Mouse.View.Pages
             }
 
         }
+
+        private void ISBNChanged(object sender, TextChangedEventArgs e)
+        {
+            txtHintISBN.Visibility = Visibility.Visible;
+            ISBNBox.Background = Brushes.Transparent;
+
+            if (ISBNBox.Text.Length > 0)
+            {
+                txtHintISBN.Visibility = Visibility.Hidden;
+                ISBNBox.Background = Brushes.White;
+            }
+        }
+
+        private void TitleChanged(object sender, TextChangedEventArgs e)
+        {
+            txtHintTitle.Visibility = Visibility.Visible;
+            TitleBox.Background = Brushes.Transparent;
+
+            if (TitleBox.Text.Length > 0)
+            {
+                txtHintTitle.Visibility = Visibility.Hidden;
+                TitleBox.Background = Brushes.White;
+            }
+        }
+
+
+        private void GenreChanged(object sender, TextChangedEventArgs e)
+        {
+            txtHintGenre.Visibility = Visibility.Visible;
+            GenreBox.Background = Brushes.Transparent;
+
+            if (GenreBox.Text.Length > 0)
+            {
+                txtHintGenre.Visibility = Visibility.Hidden;
+                GenreBox.Background = Brushes.White;
+            }
+        }
+        private void PublisherChanged(object sender, TextChangedEventArgs e)
+        {
+            txtHintPublisher.Visibility = Visibility.Visible;
+            PublisherBox.Background = Brushes.Transparent;
+
+            if (PublisherBox.Text.Length > 0)
+            {
+                txtHintPublisher.Visibility = Visibility.Hidden;
+                PublisherBox.Background = Brushes.White;
+            }
+        }
+
+        private void PubPlaceChanged(object sender, TextChangedEventArgs e)
+        {
+            txtHintPubPlace.Visibility = Visibility.Visible;
+            PubPlaceBox.Background = Brushes.Transparent;
+
+            if (PubPlaceBox.Text.Length > 0)
+            {
+                txtHintPubPlace.Visibility = Visibility.Hidden;
+                PubPlaceBox.Background = Brushes.White;
+            }
+        }
+
+        private void PubYearChanged(object sender, TextChangedEventArgs e)
+        {
+            txtHintPubYear.Visibility = Visibility.Visible;
+            PubYearBox.Background = Brushes.Transparent;
+
+            if (PubYearBox.Text.Length > 0)
+            {
+                txtHintPubYear.Visibility = Visibility.Hidden;
+                PubYearBox.Background = Brushes.White;
+            }
+        }
+
+        private void PagesChanged(object sender, TextChangedEventArgs e)
+        {
+            txtHintPages.Visibility = Visibility.Visible;
+            PagesBox.Background = Brushes.Transparent;
+
+            if (PagesBox.Text.Length > 0)
+            {
+                txtHintPages.Visibility = Visibility.Hidden;
+                PagesBox.Background = Brushes.White;
+            }
+        }
+
+        private void PriceChanged(object sender, TextChangedEventArgs e)
+        {
+            txtHintPrice.Visibility = Visibility.Visible;
+            PriceBox.Background = Brushes.Transparent;
+
+            if (PriceBox.Text.Length > 0)
+            {
+                txtHintPrice.Visibility = Visibility.Hidden;
+                PriceBox.Background = Brushes.White;
+            }
+        }
+
     }
 }

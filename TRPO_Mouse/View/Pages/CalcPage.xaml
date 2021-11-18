@@ -46,7 +46,7 @@
         <Button x:Name="ButtonC" Grid.Row="1" Grid.Column="3" Content="C" Click="ButtonC_Click"/>
 
         <Button x:Name="ButtonTochka" Grid.Row="3" Grid.Column="3" Content="," Click="button_click"/>
-        <Button x:Name="ButtonRavno" Grid.Row="4" Grid.Column="3" Content="=" Click="ButtonRavno_Click"/>
+        <Button x:Name="ButtonRavno" Grid.Row="4" Grid.Column="3" Content="=" Click="ButtonRavno_Click" ToolTip="Посчитать"/>
         <Button x:Name="ButtonPlus" Grid.Row="4" Grid.Column="2" Content="+" Click="operator_click"/>
         <Button x:Name="ButtonMinus" Grid.Row="4" Grid.Column="0" Content="-" Click="operator_click"/>
 
@@ -57,7 +57,7 @@
         <Button x:Name="Buttonx2" Grid.Row="4" Grid.Column="5" Content="x²" Click="pow2" Background="GreenYellow"/>
 
         <Button x:Name="Buttonx3" Grid.Row="5" Grid.Column="0" Content="x³" Click="pow3" Background="GreenYellow"/>
-        <Button x:Name="ButtonPlusMinus" Grid.Row="5" Grid.Column="1" Content="±" Click="operator_plusminus" Background="GreenYellow"/>
+        <Button x:Name="ButtonPlusMinus" Grid.Row="5" Grid.Column="1" Content="±" Click="operator_plusminus" Background="GreenYellow" ToolTip="Смена знака выражения"/>
         <Button x:Name="ButtonLog" Grid.Row="5" Grid.Column="2" Content="log" Click="log" Background="GreenYellow"/>
 
         <Label x:Name="labelCurrentOperation" Content="" Background="#FFD3CCCC" Grid.Row="0" Grid.ColumnSpan="2" Grid.Column="1"/>

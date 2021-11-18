@@ -64,8 +64,16 @@ namespace TRPO_Mouse.View.Pages
         private void SearchText_TextChanged(object sender, TextChangedEventArgs e)
         {
             UpdateAuthors();
-        }
 
+            txtHintSearch.Visibility = Visibility.Visible;
+            SearchText.Background = Brushes.Transparent;
+
+            if (SearchText.Text.Length > 0)
+            {
+                txtHintSearch.Visibility = Visibility.Hidden;
+                SearchText.Background = Brushes.White;
+            }
+        }
 
 
         private void SortType_SelectionChanged(object sender, SelectionChangedEventArgs e)

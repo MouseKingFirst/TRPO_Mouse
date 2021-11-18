@@ -235,5 +235,52 @@ namespace TRPO_Mouse.View.Pages
             var result = new SHA256Managed().ComputeHash(data);
             return BitConverter.ToString(result).Replace("-", "").ToLower();
         }
+
+        private void loginBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            txtHintLogin.Visibility = Visibility.Visible;
+            loginBox.Background = Brushes.Transparent;
+            if (loginBox.Text.Length > 0)
+            {
+                txtHintLogin.Visibility = Visibility.Hidden;
+                loginBox.Background = Brushes.White;
+            }
+        }
+
+        private void passwordBox_PasswordChanged(object sender, RoutedEventArgs e)
+        {
+            txtHintPass.Visibility = Visibility.Visible;
+            userPassword.Background = Brushes.Transparent;
+
+            if (userPassword.Password.Length > 0)
+            {
+                txtHintPass.Visibility = Visibility.Hidden;
+                userPassword.Background = Brushes.White;
+            }
+        }
+
+        private void repeatPassBox_PasswordChanged(object sender, RoutedEventArgs e)
+        {
+            txtHintRepeatPass.Visibility = Visibility.Visible;
+            passwordRepeat.Background = Brushes.Transparent;
+
+            if (passwordRepeat.Password.Length > 0)
+            {
+                txtHintRepeatPass.Visibility = Visibility.Hidden;
+                passwordRepeat.Background = Brushes.White;
+            }
+        }
+
+        private void FIO_PasswordChanged(object sender, TextChangedEventArgs e)
+        {
+            txtHintFIO.Visibility = Visibility.Visible;
+            FIOBox.Background = Brushes.Transparent;
+
+            if (FIOBox.Text.Length > 0)
+            {
+                txtHintFIO.Visibility = Visibility.Hidden;
+                FIOBox.Background = Brushes.White;
+            }
+        }
     }
 }

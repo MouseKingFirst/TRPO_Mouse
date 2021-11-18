@@ -20,10 +20,10 @@
             <ColumnDefinition Width="*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
         <TextBlock Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" Text="Ваша роль: Читатель" HorizontalAlignment="Center" Height="18" Margin="62,86" Width="133"></TextBlock>
-        <Button Content="Переход 1" Grid.Column="1" Grid.Row="1" VerticalAlignment="Top" Click="Button_Click" Height="20"></Button>
-        <Button Content="Переход 2" Grid.Column="1" Grid.Row="1" VerticalAlignment="Top" Margin="0, 25, 0, 0" Click="Button_Click1" Height="20"></Button>
-        <Button Content="Список книг" Grid.Column="1" Grid.Row="1" VerticalAlignment="Top" Margin="0,50,0,0" Click="Button_ViewBooks" Height="20"></Button>
-        <Button Content="Список авторов" Grid.Column="1" Grid.Row="1" VerticalAlignment="Top" Margin="0,75,0,0" Click="Button_ViewAuthors" Height="20"/>
-        <Button Content="Калькулятор" Grid.Column="1" Grid.Row="1" VerticalAlignment="Top" Margin="0,100,0,0" Click="Button_Click2" Height="20"></Button>
+        <Button Content="Переход 1" Grid.Column="1" Grid.Row="1" VerticalAlignment="Top" Click="Button_Click" Height="20" ToolTip="Страница авторизации"></Button>
+        <Button Content="Переход 2" Grid.Column="1" Grid.Row="1" VerticalAlignment="Top" Margin="0, 25, 0, 0" Click="Button_Click1" Height="20" ToolTip="Страница регистрации"></Button>
+        <Button Content="Список книг" Grid.Column="1" Grid.Row="1" VerticalAlignment="Top" Margin="0,50,0,0" Click="Button_ViewBooks" Height="20" ToolTip="Список доступных книг"></Button>
+        <Button Content="Список авторов" Grid.Column="1" Grid.Row="1" VerticalAlignment="Top" Margin="0,75,0,0" Click="Button_ViewAuthors" Height="20" ToolTip="Список авторов книг"/>
+        <Button Content="Калькулятор" Grid.Column="1" Grid.Row="1" VerticalAlignment="Top" Margin="0,100,0,0" Click="Button_Click2" Height="20" ToolTip="Калькулятор в приложении"></Button>
     </Grid>
 </Page>

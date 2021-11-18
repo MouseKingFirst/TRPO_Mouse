@@ -32,7 +32,7 @@
             <RadioButton x:Name="RBReaders" GroupName="Roles" Content="Читатели" Margin="10 0 10 0" VerticalAlignment="Center" Checked="RB_Checked" Unchecked="RB_Checked"></RadioButton>
             <RadioButton x:Name="RBLibrarians" GroupName="Roles" Content="Библиотекари" Margin="10 0 10 0" VerticalAlignment="Center" Checked="RB_Checked" Unchecked="RB_Checked"></RadioButton>
             <RadioButton x:Name="RBAdmins" GroupName="Roles" Content="Администраторы" Margin="10 0 10 0" VerticalAlignment="Center" Checked="RB_Checked" Unchecked="RB_Checked"></RadioButton>
-            <Button Content="Очистить фильтр" Padding="3 0 3 0" Margin="10 0 10 0" Click="Button_Click" VerticalAlignment="Center"></Button>
+            <Button Content="Очистить фильтр" Padding="3 0 3 0" Margin="10 0 10 0" Click="Button_Click" VerticalAlignment="Center" ToolTip="Очистка фильтра сортировки"></Button>
         </WrapPanel>
         <ListView Name="ListUser" Grid.Row="2" ScrollViewer.HorizontalScrollBarVisibility="Disabled" HorizontalContentAlignment="Center">
             <ListView.ItemsPanel>

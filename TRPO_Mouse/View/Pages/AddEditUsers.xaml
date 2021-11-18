@@ -20,13 +20,21 @@
             <ColumnDefinition Width="200"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
+        <TextBlock Text="Фамилия" Grid.Row="0"  Grid.Column="0" Margin="0,4,0,0" TextAlignment="Center" VerticalAlignment="Center"/>
         <TextBlock Text="Логин" Grid.Row="0" Grid.Column="0" Margin="10,0,0,0" VerticalAlignment="Center"/>
         <TextBlock Text="Пароль" Grid.Row="1" Grid.Column="0" Margin="10,0,0,0" VerticalAlignment="Center"/>
         <TextBlock Text="E-mail" Grid.Row="2" Grid.Column="0" Margin="10,0,0,0" VerticalAlignment="Center"/>
         <TextBlock Text="Роль" Grid.Row="3" Grid.Column="0" Margin="10,0,0,0" VerticalAlignment="Center"/>
-        <TextBox x:Name="loginBox" Text="{Binding login}" Width="360" Height="25" Grid.Row="0" Grid.Column="1"/>
-        <TextBox x:Name="passwordBox" Text="{Binding password}" Width="360" Height="25" Grid.Row="1" Grid.Column="1"/>
-        <TextBox x:Name="emailBox"  Text="{Binding email}" Width="360" Height="25"  Grid.Row="2" Grid.Column="1"/>
+
+        <TextBlock Text="Логин" Foreground="Gray" Name="txtHintLogin" Width="360" Height="25" Grid.Row="0" Grid.Column="1"/>
+        <TextBox x:Name="loginBox" Background="Transparent" Text="{Binding login}" Width="360" Height="25" Grid.Row="0" Grid.Column="1" TextChanged="LoginChanged"/>
+
+        <TextBlock Text="Пароль" Foreground="Gray" Name="txtHintPass" Width="360" Height="25" Grid.Row="1" Grid.Column="1"/>
+        <TextBox x:Name="passwordBox" Background="Transparent" Text="{Binding password}" Width="360" Height="25" Grid.Row="1" Grid.Column="1" TextChanged="PassChanged"/>
+
+        <TextBlock Text="localhost@gmail.com" Foreground="Gray" Name="txtHintEmail" Width="360" Height="25"  Grid.Row="2" Grid.Column="1"/>
+        <TextBox x:Name="emailBox" Background="Transparent"  Text="{Binding email}" Width="360" Height="25"  Grid.Row="2" Grid.Column="1" TextChanged="EmailChanged"/>
+        
         <ComboBox  Width="360"  Name="roleList" Grid.Column="1" Grid.Row="3"  Height="29">
             <ComboBoxItem>
                 <TextBlock x:Name="Reader">Читатель</TextBlock>
@@ -38,7 +46,8 @@
                 <TextBlock x:Name="Admin">Администратор</TextBlock>
             </ComboBoxItem>
         </ComboBox>
-        <Button  Name="ButtonSave" Content="Сохранить" Grid.Row="4" Grid.Column="1" Click="ButtonSave_Click" HorizontalAlignment="Center" VerticalAlignment="Bottom" Height="29" Width="80"/>
+        
+        <Button  Name="ButtonSave" Content="Сохранить" Grid.Row="4" Grid.Column="1" Click="ButtonSave_Click" HorizontalAlignment="Center" VerticalAlignment="Bottom" Height="29" Width="80" ToolTip="Сохранить данные"/>
 
     </Grid>
 </Page>

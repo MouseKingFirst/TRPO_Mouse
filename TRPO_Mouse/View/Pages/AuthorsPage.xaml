@@ -16,7 +16,10 @@
         </Grid.RowDefinitions>
         <WrapPanel Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center">
             <Label Content="ФИО" Margin="0 0 10 0" VerticalAlignment="Center"></Label>
+            <TextBlock Text="Строка для поиска" Foreground="Gray" Name="txtHintSearch"  Width="300"/>
             <TextBox x:Name="SearchText" Width="300" VerticalContentAlignment="Center" TextChanged="SearchText_TextChanged"></TextBox>
+            
+            
             <Label Content="Сортировать ФИО" Margin="40 0 10 0" VerticalAlignment="Center"></Label>
             <ComboBox x:Name="SortType" VerticalAlignment="Center" SelectionChanged="SortType_SelectionChanged">
                 <ComboBoxItem x:Name="CmbSorting">
@@ -27,7 +30,7 @@
                 </ComboBoxItem>
             </ComboBox>
             <CheckBox x:Name="WithPhoto" Content="Только с фотографиями" Margin="40 0 10 0" VerticalAlignment="Center" Checked="WithPhoto_Checked" Unchecked="WithPhoto_Checked"></CheckBox>
-            <Button Content="Очистить фильтр" Padding="3 0 3 0" Margin="10 0 10 0" Click="Button_Click" VerticalAlignment="Center"></Button>
+            <Button Content="Очистить фильтр" Padding="3 0 3 0" Margin="10 0 10 0" Click="Button_Click" VerticalAlignment="Center" ToolTip="Очистить фильтр сортировки"></Button>
         </WrapPanel>
         <ListView Name="ListAuthors" Grid.Row="2" ScrollViewer.HorizontalScrollBarVisibility="Disabled" HorizontalContentAlignment="Center">
             <ListView.ItemsPanel>

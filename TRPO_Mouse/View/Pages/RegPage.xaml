@@ -27,13 +27,16 @@
         
         
         <Label Content="Введите логин" Grid.Column="1" Grid.Row="1" VerticalAlignment="Top" Height="25"></Label>
-        <TextBox x:Name="loginBox" Grid.Column="3" Grid.Row="1" Height="25" TextWrapping="Wrap" Text="" VerticalAlignment="Top"></TextBox>
+        <TextBlock Text="Логин" Foreground="Gray" Name="txtHintLogin" Grid.Column="3" Grid.Row="1" Height="25" TextWrapping="Wrap" VerticalAlignment="Top"/>
+        <TextBox x:Name="loginBox" Background="Transparent" Grid.Column="3" Grid.Row="1" Height="25" TextWrapping="Wrap" Text="" VerticalAlignment="Top" TextChanged="loginBox_TextChanged"></TextBox>
         
         <Label Content="Введите пароль" Grid.Column="1" Grid.Row="1" VerticalAlignment="Top" Height="25" Margin="0, 30, 0, 0"></Label>
-        <PasswordBox x:Name="userPassword" Grid.Column="3" Margin="0, 30, 0, 0" Grid.Row="1" VerticalAlignment="Top" Height="25"></PasswordBox>
+        <TextBlock Text="Пароль" Foreground="Gray" Name="txtHintPass" Grid.Column="3" Margin="0, 30, 0, 0" Grid.Row="1" VerticalAlignment="Top" Height="25"/>
+        <PasswordBox x:Name="userPassword" Background="Transparent" Grid.Column="3" Margin="0, 30, 0, 0" Grid.Row="1" VerticalAlignment="Top" Height="25" PasswordChanged="passwordBox_PasswordChanged"></PasswordBox>
 
         <Label Content="Повторите пароль" Grid.Column="1" Grid.Row="1" VerticalAlignment="Top" Height="25" Margin="0, 60, 0, 0"></Label>
-        <PasswordBox x:Name="passwordRepeat" Grid.Column="3" Margin="0, 60, 0, 0" Grid.Row="1" VerticalAlignment="Top" Height="25"></PasswordBox>
+        <TextBlock Text="Повтор пароля" Foreground="Gray" Name="txtHintRepeatPass" Grid.Column="3" Margin="0, 60, 0, 0" Grid.Row="1" VerticalAlignment="Top" Height="25"/>
+        <PasswordBox x:Name="passwordRepeat" Background="Transparent" Grid.Column="3" Margin="0, 60, 0, 0" Grid.Row="1" VerticalAlignment="Top" Height="25" PasswordChanged="repeatPassBox_PasswordChanged"></PasswordBox>
 
         <Label Content="Выберите роль" Grid.Column="1" Grid.Row="1" VerticalAlignment="Top" Height="25" Margin="0, 90, 0, 0"></Label>
 
@@ -50,12 +53,13 @@
         </ComboBox>
 
         <Label Content="Введите ФИО" Grid.Column="1" Grid.Row="1" VerticalAlignment="Top" Height="25" Margin="0, 120, 0, 0"></Label>
-        <TextBox x:Name="FIOBox" Grid.Column="3" Grid.Row="1" Height="25" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Margin="0, 120, 0, 0"></TextBox>
+        <TextBlock Text="Фамилия Имя Отчество" Foreground="Gray" Name="txtHintFIO" Grid.Column="3" Grid.Row="1" Height="25" TextWrapping="Wrap" VerticalAlignment="Top" Margin="0, 120, 0, 0"/>
+        <TextBox x:Name="FIOBox" Background="Transparent" Grid.Column="3" Grid.Row="1" Height="25" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Margin="0, 120, 0, 0" TextChanged="FIO_PasswordChanged"></TextBox>
         
         <TextBlock x:Name="ErrorText" HorizontalAlignment="Center" Grid.Column="0" Grid.ColumnSpan="5" Grid.Row="1" VerticalAlignment="Top" Height="100" Margin="0, 150, 0, 0" TextAlignment="Center" Foreground="Red"></TextBlock>
 
-        <Button Click="ButtonCancel_Click" Content="Отмена" Grid.Column="1" Margin="0, 230, 0, 0" Grid.Row="1" VerticalAlignment="Top"></Button>
-        <Button Click="ButtonReg_Click" Content="Зарегистрироваться" Grid.Column="3" Margin="0, 230, 0, 0" Grid.Row="1" VerticalAlignment="Top"></Button>
+        <Button Click="ButtonCancel_Click" Content="Отмена" Grid.Column="1" Margin="0, 230, 0, 0" Grid.Row="1" VerticalAlignment="Top" ToolTip="Отмена регистрации и возврат на страницу авторизации"></Button>
+        <Button Click="ButtonReg_Click" Content="Зарегистрироваться" Grid.Column="3" Margin="0, 230, 0, 0" Grid.Row="1" VerticalAlignment="Top" ToolTip="Регистрация пользователя"></Button>
         
 
     </Grid>

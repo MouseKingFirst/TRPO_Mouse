@@ -56,5 +56,17 @@ namespace TRPO_Mouse.View.Pages
             }
 
         }
+
+        private void FIOChanged(object sender, TextChangedEventArgs e)
+        {
+            txtHintFIO.Visibility = Visibility.Visible;
+            FIOBox.Background = Brushes.Transparent;
+
+            if (FIOBox.Text.Length > 0)
+            {
+                txtHintFIO.Visibility = Visibility.Hidden;
+                FIOBox.Background = Brushes.White;
+            }
+        }
     }
 }

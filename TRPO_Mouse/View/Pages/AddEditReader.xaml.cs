@@ -75,5 +75,137 @@ namespace TRPO_Mouse.View.Pages
 
         }
 
+        private void LastNameChanged(object sender, TextChangedEventArgs e)
+        {
+            txtHintLastName.Visibility = Visibility.Visible;
+            LastNameBox.Background = Brushes.Transparent;
+
+            if (LastNameBox.Text.Length > 0)
+            {
+                txtHintLastName.Visibility = Visibility.Hidden;
+                LastNameBox.Background = Brushes.White;
+            }
+        }
+
+        private void NameChanged(object sender, TextChangedEventArgs e)
+        {
+            txtHintName.Visibility = Visibility.Visible;
+            NameBox.Background = Brushes.Transparent;
+
+            if (NameBox.Text.Length > 0)
+            {
+                txtHintName.Visibility = Visibility.Hidden;
+                NameBox.Background = Brushes.White;
+            }
+        }
+
+        private void MiddleNameChanged(object sender, TextChangedEventArgs e)
+        {
+            txtHintMiddleName.Visibility = Visibility.Visible;
+            MiddleNameBox.Background = Brushes.Transparent;
+
+            if (MiddleNameBox.Text.Length > 0)
+            {
+                txtHintMiddleName.Visibility = Visibility.Hidden;
+                MiddleNameBox.Background = Brushes.White;
+            }
+        }
+
+        private void BirthDateChanged(object sender, TextChangedEventArgs e)
+        {
+            txtHintBirthDate.Visibility = Visibility.Visible;
+            BirthDateBox.Background = Brushes.Transparent;
+
+            if (BirthDateBox.Text.Length > 0)
+            {
+                txtHintBirthDate.Visibility = Visibility.Hidden;
+                BirthDateBox.Background = Brushes.White;
+            }
+        }
+
+        private void PhoneNumChanged(object sender, TextChangedEventArgs e)
+        {
+            txtHintPhoneNumber.Visibility = Visibility.Visible;
+            PhoneNumBox.Background = Brushes.Transparent;
+
+            if (PhoneNumBox.Text.Length > 0)
+            {
+                txtHintPhoneNumber.Visibility = Visibility.Hidden;
+                PhoneNumBox.Background = Brushes.White;
+            }
+        }
+
+        private void CityChanged(object sender, TextChangedEventArgs e)
+        {
+            txtHintCity.Visibility = Visibility.Visible;
+            CityBox.Background = Brushes.Transparent;
+
+            if (CityBox.Text.Length > 0)
+            {
+                txtHintCity.Visibility = Visibility.Hidden;
+                CityBox.Background = Brushes.White;
+            }
+        }
+
+        private void StreetChanged(object sender, TextChangedEventArgs e)
+        {
+            txtHintStreet.Visibility = Visibility.Visible;
+            StreetBox.Background = Brushes.Transparent;
+
+            if (StreetBox.Text.Length > 0)
+            {
+                txtHintStreet.Visibility = Visibility.Hidden;
+                StreetBox.Background = Brushes.White;
+            }
+        }
+
+        private void HouseNumChanged(object sender, TextChangedEventArgs e)
+        {
+            txtHintHouseNum.Visibility = Visibility.Visible;
+            HouseNumBox.Background = Brushes.Transparent;
+
+            if (HouseNumBox.Text.Length > 0)
+            {
+                txtHintHouseNum.Visibility = Visibility.Hidden;
+                HouseNumBox.Background = Brushes.White;
+            }
+        }
+
+        private void ApNumChanged(object sender, TextChangedEventArgs e)
+        {
+            txtHintApNum.Visibility = Visibility.Visible;
+            ApNumBox.Background = Brushes.Transparent;
+
+            if (ApNumBox.Text.Length > 0)
+            {
+                txtHintApNum.Visibility = Visibility.Hidden;
+                ApNumBox.Background = Brushes.White;
+            }
+        }
+
+        private void PassSerChanged(object sender, TextChangedEventArgs e)
+        {
+            txtHintPassSer.Visibility = Visibility.Visible;
+            PassSerBox.Background = Brushes.Transparent;
+
+            if (PassSerBox.Text.Length > 0)
+            {
+                txtHintPassSer.Visibility = Visibility.Hidden;
+                PassSerBox.Background = Brushes.White;
+            }
+        }
+
+        private void PassNumChanged(object sender, TextChangedEventArgs e)
+        {
+            txtHintPassNum.Visibility = Visibility.Visible;
+            PassNumBox.Background = Brushes.Transparent;
+
+            if (PassNumBox.Text.Length > 0)
+            {
+                txtHintPassNum.Visibility = Visibility.Hidden;
+                PassNumBox.Background = Brushes.White;
+            }
+        }
+
     }
 }

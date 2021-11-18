@@ -149,5 +149,42 @@ namespace TRPO_Mouse.View.Pages
             }
 
         }
+
+
+        private void LoginChanged(object sender, TextChangedEventArgs e)
+        {
+            txtHintLogin.Visibility = Visibility.Visible;
+            loginBox.Background = Brushes.Transparent;
+
+            if (loginBox.Text.Length > 0)
+            {
+                txtHintLogin.Visibility = Visibility.Hidden;
+                loginBox.Background = Brushes.White;
+            }
+        }
+
+        private void PassChanged(object sender, TextChangedEventArgs e)
+        {
+            txtHintPass.Visibility = Visibility.Visible;
+            passwordBox.Background = Brushes.Transparent;
+
+            if (passwordBox.Text.Length > 0)
+            {
+                txtHintPass.Visibility = Visibility.Hidden;
+                passwordBox.Background = Brushes.White;
+            }
+        }
+
+        private void EmailChanged(object sender, TextChangedEventArgs e)
+        {
+            txtHintEmail.Visibility = Visibility.Visible;
+            emailBox.Background = Brushes.Transparent;
+
+            if (emailBox.Text.Length > 0)
+            {
+                txtHintEmail.Visibility = Visibility.Hidden;
+                emailBox.Background = Brushes.White;
+            }
+        }
     }
 }

@@ -101,5 +101,27 @@ namespace TRPO_Mouse.View.Pages
         {
             NavigationService?.Navigate(new RegPage());
         }
+
+        private void loginBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            txtHintLogin.Visibility = Visibility.Visible;
+            loginBox.Background = Brushes.Transparent;
+            if (loginBox.Text.Length > 0)
+            {
+                txtHintLogin.Visibility = Visibility.Hidden;
+                loginBox.Background = Brushes.White;
+            }
+        }
+        private void passwordBox_PasswordChanged(object sender, RoutedEventArgs e)
+        {
+            txtHintPass.Visibility = Visibility.Visible;
+            passwordBox.Background = Brushes.Transparent;
+
+            if (passwordBox.Password.Length > 0)
+            {
+                txtHintPass.Visibility = Visibility.Hidden;
+                passwordBox.Background = Brushes.White;
+            }
+        }
     }
 }

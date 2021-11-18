@@ -34,8 +34,13 @@
         <TextBlock Text="Год издания" Grid.Row="6" Grid.Column="0" TextAlignment="Center" VerticalAlignment="Center"/>
         <TextBlock Text="Кол-во страниц" Grid.Row="7" Grid.Column="0" TextAlignment="Center" VerticalAlignment="Center"/>
         <TextBlock Text="Цена" Grid.Row="8" Grid.Column="0" TextAlignment="Center" VerticalAlignment="Center"/>
-        <TextBox Text="{Binding ISBN}"  Grid.Row="0" Grid.Column="1" Margin="120,0" Height="29"/>
-        <TextBox Text="{Binding title}"  Grid.Row="1" Grid.Column="1" Margin="120,0" Height="29"/>
+
+        <TextBlock Text="978-5-699-12014-7" Foreground="Gray" Name="txtHintISBN" Grid.Row="0" Grid.Column="1" Margin="120,0" Height="29"/>
+        <TextBox x:Name="ISBNBox" Text="{Binding ISBN}" Background="Transparent"  Grid.Row="0" Grid.Column="1" Margin="120,0" Height="29" TextChanged="ISBNChanged"/>
+
+        <TextBlock Text="Название" Foreground="Gray" Name="txtHintTitle" Grid.Row="1" Grid.Column="1" Margin="120,0" Height="29"/>
+        <TextBox x:Name="TitleBox" Text="{Binding title}" Background="Transparent"  Grid.Row="1" Grid.Column="1" Margin="120,0" Height="29" TextChanged="TitleChanged"/>
+        
         <ComboBox x:Name="authorsC" SelectedItem="{Binding Path=library_authors}" DisplayMemberPath="author_FullName"  Grid.Row="2" Grid.Column="1" Margin="120,0" Height="29">
             <ComboBox.Style>
                 <Style TargetType="ComboBox">
@@ -47,13 +52,25 @@
                 </Style>
             </ComboBox.Style>
         </ComboBox>
-        <TextBox Text="{Binding genre}"   Grid.Row="3" Grid.Column="1" Margin="120,0" Height="29"/>
-        <TextBox Text="{Binding publisher}"  Grid.Row="4" Grid.Column="1" Margin="120,0" Height="29"/>
-        <TextBox Text="{Binding publication_place}"  Grid.Row="5" Grid.Column="1" Margin="120,0" Height="29"/>
-        <TextBox Text="{Binding publication_year}"  Grid.Row="6" Grid.Column="1" Margin="120,0" Height="29"/>
-        <TextBox Text="{Binding pages}"  Grid.Row="7" Grid.Column="1" Margin="120,0" Height="29"/>
-        <TextBox Text="{Binding price}"  Grid.Row="8" Grid.Column="1" Margin="120,0" Height="29"/>
-        <Button Name="ButtonSave" Content="Сохранить" Grid.Row="13" Grid.Column="1" Click="ButtonSave_Click" Margin="218,4,272,5"/>
+        <TextBlock Text="Жанр" Foreground="Gray" Name="txtHintGenre"  Grid.Row="3" Grid.Column="1" Margin="120,0" Height="29"/>
+        <TextBox x:Name="GenreBox" Text="{Binding genre}" Background="Transparent"  Grid.Row="3" Grid.Column="1" Margin="120,0" Height="29" TextChanged="GenreChanged"/>
+
+        <TextBlock Text="Издательство" Foreground="Gray" Name="txtHintPublisher" Grid.Row="4" Grid.Column="1" Margin="120,0" Height="29"/>
+        <TextBox x:Name="PublisherBox" Text="{Binding publisher}" Background="Transparent"  Grid.Row="4" Grid.Column="1" Margin="120,0" Height="29" TextChanged="PublisherChanged"/>
+
+        <TextBlock Text="Место издание" Foreground="Gray" Name="txtHintPubPlace" Grid.Row="5" Grid.Column="1" Margin="120,0" Height="29"/>
+        <TextBox x:Name="PubPlaceBox" Text="{Binding publication_place}" Background="Transparent" Grid.Row="5" Grid.Column="1" Margin="120,0" Height="29" TextChanged="PubPlaceChanged"/>
+
+        <TextBlock Text="Год издания" Foreground="Gray" Name="txtHintPubYear" Grid.Row="6" Grid.Column="1" Margin="120,0" Height="29"/>
+        <TextBox x:Name="PubYearBox" Text="{Binding publication_year}" Background="Transparent" Grid.Row="6" Grid.Column="1" Margin="120,0" Height="29" TextChanged="PubYearChanged"/>
+
+        <TextBlock Text="Кол-во страниц" Foreground="Gray" Name="txtHintPages" Grid.Row="7" Grid.Column="1" Margin="120,0" Height="29"/>
+        <TextBox x:Name="PagesBox" Text="{Binding pages}" Background="Transparent" Grid.Row="7" Grid.Column="1" Margin="120,0" Height="29" TextChanged="PagesChanged"/>
+
+        <TextBlock Text="Цена" Foreground="Gray" Name="txtHintPrice" Grid.Row="8" Grid.Column="1" Margin="120,0" Height="29"/>
+        <TextBox x:Name="PriceBox" Text="{Binding price}" Background="Transparent" Grid.Row="8" Grid.Column="1" Margin="120,0" Height="29" TextChanged="PriceChanged"/>
+        
+        <Button Name="ButtonSave" Content="Сохранить" Grid.Row="13" Grid.Column="1" Click="ButtonSave_Click" Margin="218,4,272,5" ToolTip="Сохранить данные"/>
 
     </Grid>
 </Page>
