@@ -181,5 +181,16 @@ namespace TRPO_Mouse
 
         }
 
+        private void HelpBtn_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                Process.Start("help.chm");
+            }
+            catch
+            {
+                MessageBox.Show("Ошибка! Не удалось открыть справку!\nВозможно файл справки отсутствует!");
+            }
+        }
     }
 }
