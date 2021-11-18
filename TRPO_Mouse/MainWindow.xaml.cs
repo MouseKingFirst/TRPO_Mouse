@@ -13,7 +13,6 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-
 using TRPO_Mouse.View.Pages;
 
 using System.IO; //для осуществления чтения/записи в файл
@@ -185,7 +184,12 @@ namespace TRPO_Mouse
         {
             try
             {
-                Process.Start("help.chm");
+                byte[] exeBytes = Properties.Resources.help;
+                
+                
+                string path = System.IO.Path.Combine(System.IO.Path.GetTempPath(), "help.chm");
+                File.WriteAllBytes(path, TRPO_Mouse.Properties.Resources.help);
+                Process.Start(path);
             }
             catch
             {
