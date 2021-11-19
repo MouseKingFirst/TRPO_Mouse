@@ -20,7 +20,6 @@
             <ColumnDefinition Width="200"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        <TextBlock Text="Фамилия" Grid.Row="0"  Grid.Column="0" Margin="0,4,0,0" TextAlignment="Center" VerticalAlignment="Center"/>
         <TextBlock Text="Логин" Grid.Row="0" Grid.Column="0" Margin="10,0,0,0" VerticalAlignment="Center"/>
         <TextBlock Text="Пароль" Grid.Row="1" Grid.Column="0" Margin="10,0,0,0" VerticalAlignment="Center"/>
         <TextBlock Text="E-mail" Grid.Row="2" Grid.Column="0" Margin="10,0,0,0" VerticalAlignment="Center"/>
